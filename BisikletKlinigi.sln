@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BisikletKlinigi", "BisikletKlinigi\BisikletKlinigi.csproj", "{24C9FFFD-6C5B-432D-BCF0-2CBB4547A8AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BisikletKlinigiWebUI", "BisikletKlinigi\BisikletKlinigiWebUI.csproj", "{24C9FFFD-6C5B-432D-BCF0-2CBB4547A8AE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{8B1D871E-E42A-488E-ADFA-CA1F3DEE4026}"
 EndProject
