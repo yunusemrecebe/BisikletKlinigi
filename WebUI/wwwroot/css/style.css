@@ -1,7 +1,9 @@
 :root {
     --root-text-color: white;
     --Navbar-link-text-color: white;
-    --paragraph-font-size: 1.3em;
+    --paragraph-font-size: 1.4em;
+    --navbar-font-size: 1.2em;
+    --navbar-height:50px;
 }
 
 body {
@@ -12,11 +14,12 @@ body {
 .Navbar {
     display: flex;
     position: fixed;
+    flex-wrap:nowrap;
     align-items: center;
-    font-size: var(--paragraph-font-size);
+    font-size: var(--navbar-font-size);
     z-index: 10;
     right: 0;
-    top: 5%;
+    top: 30px;
     background-color: transparent;
 }
 
@@ -45,35 +48,72 @@ body {
 /* */
 
 .Homepage {
+
+}
+
+.Homepage .slide {
+    background-repeat: no-repeat;
+    background-size: cover;  
 }
 
 .Homepage-text {
     position: absolute;
     right: 5%;
-    bottom: 20%;
+    bottom: 100px;
+    z-index: 9;
+    text-shadow: 2px 2px 4px #000000;
     width: 45%;
     font-size: var(--paragraph-font-size);
 }
 
-
-
 .About {
-    display: flex;
-    justify-content: space-around;
     font-size: var(--paragraph-font-size);
 }
 
-.About-img img {
-    width: 500px;
+.About-img{
     clip-path: polygon(36% 3%, 93% 16%, 95% 77%, 75% 100%, 17% 91%, 3% 64%, 0 29%);
 }
 
-.About-text p {
-    text-align: center;
+.Sales {
+    color:black;
 }
 
-.Sales {
-}
 
 .Contact {
+    font-size: var(--paragraph-font-size);
 }
+
+#map {
+    height: 400px;
+    width: 100%;
+    min-width:350px;
+}
+
+
+@media (max-width:800px) {
+
+    .Contact .container{
+    padding-top:var(--navbar-height);
+    }
+
+}
+
+@media (max-width:650px) {
+    .Navbar{
+        top:5px;
+    }
+
+    .Homepage-text {
+        width: 80%;
+        left:5px;
+    }
+}
+
+@media (max-width:400px) {
+    .Homepage-text {
+        width: 95%;
+        left: 10px;
+    }
+}
+
+
