@@ -1,0 +1,79 @@
+:root {
+    --root-text-color: white;
+    --Navbar-link-text-color: white;
+    --paragraph-font-size: 1.3em;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: var(--root-text-color);
+}
+
+.Navbar {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    font-size: var(--paragraph-font-size);
+    z-index: 10;
+    right: 0;
+    top: 5%;
+    background-color: transparent;
+}
+
+.Navbar-link, .Navbar-link:hover, .Navbar-link:visited, .Navbar-link:focus, .Navbar-link:active {
+    color: var(--Navbar-link-text-color);
+    padding-right: 1rem;
+    text-decoration: none;
+    outline: 0;
+}
+
+.Navbar-link::after {
+    content: '';
+    display: block;
+    visibility: hidden;
+    width: 0px;
+    height: 3px;
+    background-color: var(--Navbar-link-text-color);
+    transition: width .4s;
+}
+
+.Navbar-link:hover::after {
+    visibility: visible;
+    width: 100%;
+}
+
+/* */
+
+.Homepage {
+}
+
+.Homepage-text {
+    position: absolute;
+    right: 5%;
+    bottom: 20%;
+    width: 45%;
+    font-size: var(--paragraph-font-size);
+}
+
+
+
+.About {
+    display: flex;
+    justify-content: space-around;
+    font-size: var(--paragraph-font-size);
+}
+
+.About-img img {
+    width: 500px;
+    clip-path: polygon(36% 3%, 93% 16%, 95% 77%, 75% 100%, 17% 91%, 3% 64%, 0 29%);
+}
+
+.About-text p {
+    text-align: center;
+}
+
+.Sales {
+}
+
+.Contact {
+}

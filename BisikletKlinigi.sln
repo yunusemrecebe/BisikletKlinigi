@@ -11,20 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Busine
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI", "WebUI\WebUI.csproj", "{3370D95F-C2CB-47B9-B0CB-08AFF5125B29}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wwwroot", "wwwroot", "{CB4F1FB8-581E-44CA-8A80-268EB4A1EDB3}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{E7823BA3-F3D3-4C7D-8A29-9524A44AE731}"
-	ProjectSection(SolutionItems) = preProject
-		style.css = style.css
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{C1DCB6A1-A730-47A1-AA99-B74E7F65273C}"
-	ProjectSection(SolutionItems) = preProject
-		script.js = script.js
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{5A456DD9-5D7D-409C-868B-B7FB1B532949}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,11 +36,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{E7823BA3-F3D3-4C7D-8A29-9524A44AE731} = {CB4F1FB8-581E-44CA-8A80-268EB4A1EDB3}
-		{C1DCB6A1-A730-47A1-AA99-B74E7F65273C} = {CB4F1FB8-581E-44CA-8A80-268EB4A1EDB3}
-		{5A456DD9-5D7D-409C-868B-B7FB1B532949} = {CB4F1FB8-581E-44CA-8A80-268EB4A1EDB3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {396A5C4D-6CAE-4C5C-A233-173B52E0ABAA}

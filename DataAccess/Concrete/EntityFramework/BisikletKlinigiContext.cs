@@ -11,7 +11,10 @@ namespace BisikletKlinigi.DataAccess.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-63SM79K;Database=BisikletKlinigi;Trusted_Connection=true");
+            string local = @"Server=DESKTOP-63SM79K;Database=BisikletKlinigi;Trusted_Connection=true";
+            string server = @"Server = MSSQLSERVER2019; Database = BisikletKlinigi; User = BKAdmin; Password =% Mgi11l5";
+
+            optionsBuilder.UseSqlServer(local);
         }
 
         public DbSet<User> Users { get; set; }
