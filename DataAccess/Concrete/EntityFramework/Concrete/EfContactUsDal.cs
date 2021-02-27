@@ -7,7 +7,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Concrete.EntityFramework.Concrete
 {
-    public class EfUserDal : EfEntityRepositoryBase<User, BisikletKlinigiContext>, IUserDal
+    public class EfContactUsDal : EfEntityRepositoryBase<ContactUs,BisikletKlinigiContext>, IContactUsDal
     {
     }
 }

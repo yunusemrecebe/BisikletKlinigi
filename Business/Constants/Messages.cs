@@ -15,5 +15,10 @@ namespace Business.Constants
         public static string SaleDeleted = "İlan silindi!";
         public static string SaleUpdated = "İlan güncellendi!";
         public static string SalesListed = "İlanlar listelendi!";
+
+        public static string MessagesAdded = "Mesaj ekleme işlemi başarılı!";
+        public static string MessageDeleted = "Mesaj silindi!";
+        public static string MessageUpdated = "Mesaj Güncellendi!";
+        public static string MessagesListed = "Mesajlar Listelendi";
     }
 }

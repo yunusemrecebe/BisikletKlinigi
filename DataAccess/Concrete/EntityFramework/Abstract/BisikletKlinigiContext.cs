@@ -19,5 +19,6 @@ namespace BisikletKlinigi.DataAccess.Concrete
 
         public DbSet<User> Users { get; set; }
         public DbSet<Sale> Sales { get; set; }
+        public DbSet<ContactUs> Contacts { get; set; }
     }
 }

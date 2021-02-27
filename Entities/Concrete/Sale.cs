@@ -22,7 +22,7 @@ namespace Entities.Concrete
         public int Speed { get; set; }
         public int Warranty { get; set; }
         public int RearDerailleur { get; set; }
-        //public int FrontDerailleurs { get; set; }
+        public int FrontDerailleurs { get; set; }
         public int Crankset { get; set; }
         public int Shifters { get; set; }
     }
