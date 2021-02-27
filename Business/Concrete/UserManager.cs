@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Business.Abstract;
 using Business.Constants;
@@ -46,6 +47,11 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(_userDal.Get(x=>x.Id == userId));
         }
 
-        
+        public IDataResult<User> Login(string mail, string password)
+        {
+            return new SuccessDataResult<User>(_userDal.Get(x => x.Email == mail && x.Password == password));
+            //return new SuccessDataResult<List<User>>(_userDal.GetAll(x=>x.Id==5));
+            //return new SuccessDataResult<User>(_userDal.Get(x => x.Id == 5));
+        }
     }
 }

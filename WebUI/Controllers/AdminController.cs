@@ -25,6 +25,24 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(string mail, string password)
+        {
+            var result = _userService.Login(mail,password);
+            if (result.Data != null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult Register()
         {
             return View();
