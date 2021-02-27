@@ -8,6 +8,8 @@ Bisiklet Kliniği adlı işletme için hazırladığımız web projesi.
 
 - Repository Design Pattern
 
+- SOLID Prensiplerine Uygun Mimari
+
 - Entity Framework Core
 
 - Autofac
