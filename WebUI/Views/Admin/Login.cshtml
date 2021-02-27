@@ -5,14 +5,18 @@
 <body>
 <h1>Giriş yap</h1>
 <form action="/Admin/Login" method="post">
+    @if (@ViewBag.error != null)
+    {
+        <h3>@ViewBag.error</h3>
+    }
     <div>
         <label for="mail">Mail</label>
-        <input name="mail" />
+        <input name="mail"/>
     </div>
 
     <div>
         <label for="password">Şifre</label>
-        <input name="password" />
+        <input name="password"/>
     </div>
 
     <button type="submit">Gönder</button>

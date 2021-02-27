@@ -39,6 +39,7 @@ namespace WebUI.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.error = "hatalı giriş yaptınız!";
             return View();
         }
 
