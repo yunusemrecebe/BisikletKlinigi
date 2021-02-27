@@ -5,7 +5,7 @@ using Entities.Abstract;
 
 namespace Entities.Concrete
 {
-    public class Communication : IEntity
+    public class ContactUs : IEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }
