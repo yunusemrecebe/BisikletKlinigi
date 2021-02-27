@@ -1,0 +1,12 @@
+﻿@model Entities.Concrete.Sale
+
+<h1> Satıştaki Bisikletler </h1>
+
+@foreach (var sale in (List<Entities.Concrete.Sale>)ViewBag.result)
+{
+    <p>Id: @sale.Id</p>
+    <p>Başlık: @sale.Topic</p>
+    <p>Açıklama: @sale.Description</p>
+    <hr/><br/>
+}
+

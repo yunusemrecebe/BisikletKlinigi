@@ -56,9 +56,10 @@ namespace WebUI.Controllers
             var result = _userService.Add(user);
             if (result.Success)
             {
-                return View();
+                return RedirectToAction("Login");
             }
 
+            ViewBag.error = "Kayıt olunamadı!";
             return View();
         }
     }

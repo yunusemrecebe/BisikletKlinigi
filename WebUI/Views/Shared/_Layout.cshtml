@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+@await Html.PartialAsync("_navbar");
+<div>
+    @RenderBody()
+</div>
+@await Html.PartialAsync("_footer");
+</body>
+</html>
