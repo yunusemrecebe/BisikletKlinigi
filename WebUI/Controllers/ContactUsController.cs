@@ -32,7 +32,6 @@ namespace WebUI.Controllers
                 ViewBag.result = result.Message;
                 return RedirectToAction("Index");
             }
-
             ViewBag.error = "Mesaj gönderilemedi!";
             return RedirectToAction("Index");
         }

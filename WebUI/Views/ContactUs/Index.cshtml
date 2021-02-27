@@ -19,7 +19,14 @@
         </div>
 
     </div>
-
+    @if (@ViewBag.result != null)
+    {
+        <h3>@ViewBag.result</h3>
+    }
+    @if (@ViewBag.error != null)
+    {
+        <h3>@ViewBag.error</h3>
+    }
     <section class="align-center text-center">
         <div class="container align-items-center">
             <hr>
@@ -27,42 +34,36 @@
             <p>Düşüncelerinizi iletişim formuyla iletmekten çekinmeyin.</p>
 
             <div class="col-md-6" style="margin:auto">
-                @if (ViewBag.result != null)
-                {
-                    <p>@ViewBag.result</p>
-                }
-                @if (ViewBag.error != null)
-                {
-                    <p>@ViewBag.error</p>
-                }
-                
-            <form method="POST" action="/ContactUs/SendMessage" class="form-horizontal">
-                <div class="form-group">
-                    <label for="Name">İsim</label>
-                    <input type="text" class="form-control" name="Name" placeholder="İsim">
-                </div>
-                <div class="form-group">
-                    <label for="LastName">Soyisim</label>
-                    <input type="text" class="form-control" name="LastName" placeholder="Soyisim">
-                </div>
-                <div class="form-group">
-                    <label for="Email">Email</label>
-                    <input type="email" class="form-control" name="Email" placeholder="isimsoyisim@example.com">
-                </div>
-                <div class="form-group ">
-                    <label for="Message">Mesaj</label>
-                    <textarea class="form-control" name="Message" placeholder="Buradan bir mesaj gönderebilirsiniz!"></textarea>
-                </div>
-                <button type="submit" class="btn btn-danger btn-lg mt-1">Gönder</button>
-            </form>
 
-                    <hr>
-                    <h3>Sosyal Medyada Biz</h3>
-                    <ul class="list-inline">
-                        <li><a href="https://www.facebook.com/" class="btn btn-default btn-lg"><i class="bi bi-facebook"></i><span class="network-name"> Facebook</span></i></a></li>
-                        <li><a href="https://twitter.com/" class="btn btn-default btn-lg"><i class="bi bi-twitter"></i> <span class="network-name">Twitter</span></i></a></li>
-                        <li><a href="https://www.instagram.com/" class="btn btn-default btn-lg"><i class="bi bi-instagram"></i> <span class="network-name">Instagram</span></i></a></li>
-                    </ul>
+
+
+                <form method="POST" action="/ContactUs/SendMessage" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="Name">İsim</label>
+                        <input type="text" class="form-control" name="Name" placeholder="İsim">
+                    </div>
+                    <div class="form-group">
+                        <label for="LastName">Soyisim</label>
+                        <input type="text" class="form-control" name="LastName" placeholder="Soyisim">
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        <input type="email" class="form-control" name="Email" placeholder="isimsoyisim@example.com">
+                    </div>
+                    <div class="form-group ">
+                        <label for="Message">Mesaj</label>
+                        <textarea class="form-control" name="Message" placeholder="Buradan bir mesaj gönderebilirsiniz!"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger btn-lg mt-1">Gönder</button>
+                </form>
+
+                <hr>
+                <h3>Sosyal Medyada Biz</h3>
+                <ul class="list-inline">
+                    <li><a href="https://www.facebook.com/" class="btn btn-default btn-lg"><i class="bi bi-facebook"></i><span class="network-name"> Facebook</span></i></a></li>
+                    <li><a href="https://twitter.com/" class="btn btn-default btn-lg"><i class="bi bi-twitter"></i> <span class="network-name">Twitter</span></i></a></li>
+                    <li><a href="https://www.instagram.com/" class="btn btn-default btn-lg"><i class="bi bi-instagram"></i> <span class="network-name">Instagram</span></i></a></li>
+                </ul>
             </div>
 
         </div>
