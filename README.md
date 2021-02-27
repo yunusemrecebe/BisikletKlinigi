@@ -2,7 +2,7 @@
 Bisiklet Kliniği adlı işletme için hazırladığımız web projesi.
 
 # Kullanılan teknolojiler ve yapılar
-- Asp.Net Core MVC 5
+- ASP.NET Core MVC  5
 
 - N-Tier Architecture
 
