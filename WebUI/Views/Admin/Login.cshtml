@@ -1,25 +1,26 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-</head>
-<body>
-<h1>Giriş yap</h1>
-<form action="/Admin/Login" method="post">
+﻿<div class="container Login">
+    <h1>Giriş yap</h1>
     @if (@ViewBag.error != null)
     {
         <h3>@ViewBag.error</h3>
     }
-    <div>
-        <label for="mail">Mail</label>
-        <input name="mail"/>
-    </div>
 
-    <div>
-        <label for="password">Şifre</label>
-        <input name="password"/>
-    </div>
+    <form action="/Admin/Login" method="post" class="Portal-kayit-form">
+        <div class="row">
+            <div class="mb-3">
+                <label for="mail" class="form-label">Email adresi</label>
+                <input type="email" class="form-control" name="mail" aria-describedby="emailHelp" />
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Şifreniz</label>
+                <input type="password" class="form-control" name="password" />
+            </div>
+            <div class="sm-3">
+                <button type="submit" class="btn btn-lg btn-primary">Giriş Yap</button>
+            </div>
+            
+        </div>
+    </form>
 
-    <button type="submit">Gönder</button>
-</form>
-</body>
-</html>
+</div>
+

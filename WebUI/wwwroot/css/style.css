@@ -4,7 +4,9 @@
     --slider-text-color: white;
     --navbar-background-color: #F8F9FA;
     --about-font-size: 1.6rem;
-    --contact-font-size:1.4rem;
+    --contact-font-size: 1.4rem;
+    --footer-background-color: #393E46;
+    --home-font-size: 1.4rem;
 }
 
 body {
@@ -34,6 +36,25 @@ body {
     margin-left:auto;
 }
 
+.Sales, .Login, .Register, .About{
+    min-height:70vh;
+}
+
+footer{
+    background-color:var(--footer-background-color);
+}
+
+footer a{
+    text-decoration:none;
+}
+
+.Home-cards p {
+    font-size: var(--home-font-size);
+}
+
+.Home-cards img{
+    width:270px;
+}
 
 .About {
     font-size: var(--about-font-size);
@@ -52,99 +73,4 @@ body {
     width: 100%;
     min-width:280px;
 }
-
-
-/*.Navbar-link, .Navbar-link:hover, .Navbar-link:visited, .Navbar-link:focus, .Navbar-link:active {
-    color: var(--Navbar-link-text-color);
-    padding-right: 1rem;
-    text-decoration: none;
-    outline: 0;
-}
-
-.Navbar-link::after {
-    content: '';
-    display: block;
-    visibility: hidden;
-    width: 0px;
-    height: 3px;
-    background-color: var(--Navbar-link-text-color);
-    transition: width .4s;
-}
-
-.Navbar-link:hover::after {
-    visibility: visible;
-    width: 100%;
-}*/*/
-
-/* */
-
-/*.Homepage {
-
-}
-
-.Homepage .slide {
-    background-repeat: no-repeat;
-    background-size: cover;  
-}
-
-.Homepage-text {
-    position: absolute;
-    right: 5%;
-    bottom: 100px;
-    z-index: 9;
-    text-shadow: 2px 2px 4px #000000;
-    width: 45%;
-    font-size: var(--paragraph-font-size);
-}
-
-.About {
-    font-size: var(--paragraph-font-size);
-}
-
-.About-img{
-    clip-path: polygon(36% 3%, 93% 16%, 95% 77%, 75% 100%, 17% 91%, 3% 64%, 0 29%);
-}
-
-.Sales {
-    color:black;
-}
-
-
-.Contact {
-    font-size: var(--paragraph-font-size);
-}
-
-#map {
-    height: 400px;
-    width: 100%;
-    min-width:350px;
-}
-
-
-@media (max-width:800px) {
-
-    .Contact .container{
-    padding-top:var(--navbar-height);
-    }
-
-}
-
-@media (max-width:650px) {
-    .Navbar{
-        top:5px;
-    }
-
-    .Homepage-text {
-        width: 80%;
-        left:5px;
-    }
-}
-
-@media (max-width:400px) {
-    .Homepage-text {
-        width: 95%;
-        left: 10px;
-    }
-}*/
-
 

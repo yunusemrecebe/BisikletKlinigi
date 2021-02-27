@@ -1,45 +1,41 @@
 ﻿@model User
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
 @if (ViewBag.error != null)
 {
     <h1>@ViewBag.error</h1>
 }
 
-<form method="post" action="/Admin/Register/" class="Portal-kayit-form">
-    <div class="row">
-        <div class="col">
-            <div class="mb-3">
-                <label for="InputName" class="form-label">Adınız</label>
-                <input type="name" class="form-control" name="Name"/>
+<div class="container Register">
+    <h1>Kayıt ol</h1>
+    <form method="post" action="/Admin/Register/" class="Portal-kayit-form">
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="InputName" class="form-label">Adınız</label>
+                    <input type="text" class="form-control" name="Name" />
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="InputLastName" class="form-label">Soyadınız</label>
+                    <input type="text" class="form-control" name="LastName" />
+                </div>
             </div>
         </div>
-        <div class="col">
-            <div class="mb-3">
-                <label for="InputLastName" class="form-label">Soyadınız</label>
-                <input type="lastname" class="form-control" name="LastName"/>
-            </div>
+        <div class="mb-3">
+            <label for="InputEmail" class="form-label">Email adresi</label>
+            <input type="email" class="form-control" name="Email" aria-describedby="emailHelp" />
         </div>
-    </div>
-    <div class="mb-3">
-        <label for="InputEmail" class="form-label">Email adresi</label>
-        <input type="email" class="form-control" name="Email" aria-describedby="emailHelp"/>
-    </div>
-    <div class="mb-3">
-        <label for="InputPassword" class="form-label">Şifreniz</label>
-        <input type="password" class="form-control" name="Password"/>
-    </div>
-    <div class="mb-3">
-        <label for="InputMobile" class="form-label">Telefon</label>
-        <input type="tel" class="form-control" name="Phone" aria-describedby="mobileNumber"/>
-    </div>
+        <div class="mb-3">
+            <label for="InputPassword" class="form-label">Şifreniz</label>
+            <input type="password" class="form-control" name="Password" />
+        </div>
+        <div class="mb-3">
+            <label for="InputMobile" class="form-label">Telefon</label>
+            <input type="tel" class="form-control" name="Phone" aria-describedby="mobileNumber" />
+        </div>
 
-    <button type="submit" class="btn btn-primary">Kayıt Ol</button>
-</form>
-</body>
-</html>
+        <button type="submit" class="btn btn-lg btn-primary">Kayıt Ol</button>
+    </form>
+</div>
+
