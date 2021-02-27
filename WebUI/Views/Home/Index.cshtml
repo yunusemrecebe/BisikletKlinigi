@@ -1,110 +1,64 @@
-﻿<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Bisiklet Kliniği</title>
-    <meta name="author" content="YESODE" />
-    <meta name="description" content="Bisiklet Kliniği Kurumsal Web Sitesi." />
-    <meta name="keywords" content="bisiklet,bisiklet tamiri,bisiklet satışı, beylikdüzü bisikletçi" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Resource-type" content="Document" />
+﻿<div class="container position-relative">
+    <p class="slider-text position-absolute">
+        Sıfır ve ikinci el bisiklet satış, tamir ve bakım hizmeti sunuyoruz.
+        <br />
+        Müşteri memnuniyetiniz için tutkuyla çalıştığımız bisiklet sektöründe hizmet vermekteyiz.
+    </p>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/fullpage.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <nav class="Navbar">
-        <a class="Navbar-link" href="#homepage">Anasayfa</a>
-        <a class="Navbar-link" href="#about">Hakkımızda</a>
-        <a class="Navbar-link" href="#sales">Satılık Bisikletler</a>
-        <a class="Navbar-link" href="#contact">İletişim</a>
-    </nav>
-
-    <div id="fullpage">
-
-        <header class="section Homepage">
-            <p class="Homepage-text">
-                Sıfır ve ikinci el bisiklet satış, tamir ve bakım hizmeti sunuyoruz.
-                <br />
-                Müşteri memnuniyetiniz için tutkuyla çalıştığımız bisiklet sektöründe hizmet vermekteyiz.
-            </p>
-
-            <div class="slide active" style="background-image: url(img/broken-bicycle.jpg);"></div>
-            <div class="slide" style="background-image: url(img/mountain-bike.jpg);"></div>
-            <div class="slide" style="background-image: url(img/adjusting-bicycle-saddle.jpg);"></div>
-            <div class="slide" style="background-image: url(img/broken-bicycle.jpg);"></div>
-        </header>
-
-        <section class="section About">
-
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <img class="img-fluid About-img" style="min-width:375px;" src="/img/bisiklet-tamiri.jpg" alt="bisiklet tamiri" />
-                    </div>
-
-                    <div class="col d-flex align-items-center ">
-                        <p class="align-middle">
-                            Dükkanımız bisiklet sahipleri için haftanın 6 günü hizmet vermektedir.
-                            Çocuk bisikletlerinden yarış bisikletlerine kadar her çeşitteki bisiklet için
-                            beylikdüzündeki mağazamızda bakım, tamir, yenileme ve yedek parça hizmeti sunuyoruz.
-                        </p>
-                    </div>
-                </div>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/adjusting-bicycle-saddle.jpg" class="d-block w-100" alt="..." />
             </div>
-
-        </section>
-
-        <section class="section Sales">
-            <div class="container">
-
-
-                <div class="card" style="width: 18rem;">
-                    <img src="https://cdn.akakce.com/salcano/salcano-ng700-24-md-24-jant-21-vites-erkek-z.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Salcano 5000</h5>
-                        <p class="card-text">Sahibinden satılık çok temiz bisiklet sadece 1 sene kullanıldı.</p>
-                        <a href="#" class="btn btn-primary">Detaylara Gözat</a>
-                    </div>
-                </div>
-
-
-
+            <div class="carousel-item">
+                <img src="img/bisiklet-tamiri.jpg" class="d-block w-100" alt="..." />
             </div>
-        </section>
-
-        <footer class="section Contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col d-flex align-items-center">
-                        <address>
-                            Adres: Mevlana Mahallesi Çelebi Mehmet Caddesi  <br />
-                            No: 33A 34515 Esenyurt – İstanbul <br />
-                            Telefon: 0 212 854 38 55 / 300 <br />
-                            Posta Kodu: 34515 <br />
-                            E-Posta: info@marmarapark.com <br />
-                            Web: www.marmarapark.com
-                        </address>
-                    </div>
-
-                    <div class="col">
-                        <div id="map">
-
-                        </div>
-                    </div>
-                </div>
-
+            <div class="carousel-item">
+                <img src="img/broken-bicycle.jpg" class="d-block w-100" alt="..." />
             </div>
-        </footer>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
 
+<div class="container">
+
+    <div class="row">
+        <div class="col">
+            hello
+
+        </div>
+
+        <div class="col">
+            hello
+
+
+
+        </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/fullpage.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly" async></script>
-</body>
-</html>
+    <div class="row">
+        <div class="col">
+
+            hello
+
+        </div>
+
+        <div class="col">
+            hello
+
+
+        </div>
+    </div>
+
+
+</div>
