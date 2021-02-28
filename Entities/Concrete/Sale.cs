@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using Entities.Abstract;
 using Microsoft.AspNetCore.Http;
@@ -28,7 +27,5 @@ namespace Entities.Concrete
         public int Crankset { get; set; }
         public int Shifters { get; set; }
         public string Image { get; set; }
-        [NotMapped]
-        public IFormFile ImagePath { get; set; }
     }
 }

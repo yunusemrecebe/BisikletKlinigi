@@ -4,7 +4,7 @@
 }
 <div class="container">
 
-    <form class="row g-3" method="post" action="/Sales/Create" enctype='multipart/form-data'>
+    <form class="row g-3" method="post" asp-controller="Sales" asp-action="Create" enctype="multipart/form-data">
         <div class="col-md-4">
             <label for="Owner" class="form-label">Sahibi</label>
             <input type="text" name="Owner" class="form-control" id="Owner">

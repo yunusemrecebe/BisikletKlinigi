@@ -37,18 +37,20 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Sale sale, IFormFile ImagePath)
+        public async Task<IActionResult> Create(Sale sale, IFormFile Image)
         {
-
-            var images = Path.Combine(_environment.WebRootPath, "images");
-            if (sale.ImagePath.Length > 0)
+            if (Image != null)
             {
-                using (var fileStream = new FileStream(Path.Combine(images, sale.ImagePath.FileName), FileMode.Create))
+                var extension = Path.GetExtension(Image.FileName);
+                var fileName = string.Format($"bisikletKlinigi{Guid.NewGuid()}{extension}");
+                var path = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot\\img\\uploads", fileName);
+                sale.Image = fileName;
+
+                using (var stream = new FileStream(path,FileMode.Create))
                 {
-                    sale.ImagePath.CopyToAsync(fileStream);
+                    await Image.CopyToAsync(stream);
                 }
             }
-            sale.Image = sale.ImagePath.FileName;
 
             var result = _saleService.Add(sale);
             if (result.Success)
@@ -101,6 +103,7 @@ namespace WebUI.Controllers
             if (result.Success)
             {
                 ViewBag.Description = result.Data.Description;
+                ViewBag.Image = result.Data.Image;
                 return View();
             }
                
