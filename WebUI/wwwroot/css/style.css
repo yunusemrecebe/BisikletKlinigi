@@ -48,6 +48,7 @@ footer a{
     text-decoration:none;
 }
 
+
 .Home-cards p {
     font-size: var(--home-font-size);
 }
@@ -74,3 +75,14 @@ footer a{
     min-width:280px;
 }
 
+@media only screen and (max-width: 770px) {
+    .Mobile-order1 {
+        order:1;
+    }
+
+    .slider-text{
+        display:none !important;
+    }
+    
+  
+}
