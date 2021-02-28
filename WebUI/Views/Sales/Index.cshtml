@@ -4,29 +4,79 @@
 
     <h1> Satıştaki Bisikletler </h1>
 
-    <div class="border border-5 Sales">
-        <div class="card m-2" style="width: 18rem;">
-            <img src="~/img/bisiklet-tamiri.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">sale.Topic</h5>
-                <p class="card-text">sale.Description</p>
-                <a href="#" class="btn btn-primary">id:sale.Id</a>
-            </div>
-        </div>
-        @foreach (var sale in (List<Entities.Concrete.Sale>)ViewBag.result)
-        {
-            <div class="card p-2" style="width: 18rem;">
-                <img src="~/img/broken-bicycle.jpg" class="card-img-top" alt="...">
+    <div class="container border border-5 Sales position-relative">
+        <div class="row d-flex justify-content-center">
+
+            <div class="card m-2 p-0" style="width: 18rem;">
+                <img src="~/img/bisiklet-tamiri.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">@sale.Topic</h5>
-                    <p class="card-text">@sale.Description</p>
-                    <a href="#" class="btn btn-primary">id: @sale.Id</a>
+                    <h5 class="card-title">sale.Topic</h5>
+                    <p class="card-text">sale.Description</p>
+                    <a href="#" class="btn btn-danger">id:sale.Id</a>
                 </div>
             </div>
-        }
 
+            <div class="card m-2 p-0" style="width: 18rem;">
+                <img src="~/img/bisiklet-tamiri.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">sale.Topic</h5>
+                    <p class="card-text">sale.Description</p>
+                    <a href="#" class="btn btn-danger">id:sale.Id</a>
+                </div>
+            </div>
+
+            <div class="card m-2 p-0" style="width: 18rem;">
+                <img src="~/img/bisiklet-tamiri.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">sale.Topic</h5>
+                    <p class="card-text">sale.Description</p>
+                    <a href="#" class="btn btn-danger">id:sale.Id</a>
+                </div>
+            </div>
+
+            <div class="card m-2 p-0" style="width: 18rem;">
+                <img src="~/img/bisiklet-tamiri.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">sale.Topic</h5>
+                    <p class="card-text">sale.Description</p>
+                    <a href="#" class="btn btn-danger">id:sale.Id</a>
+                </div>
+            </div>
+
+            @foreach (var sale in (List<Entities.Concrete.Sale>)ViewBag.result)
+            {
+                <div class="card p-2" style="width: 18rem;">
+                    <img src="~/img/broken-bicycle.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@sale.Topic</h5>
+                        <p class="card-text">@sale.Description</p>
+                        <a href="#" class="btn btn-primary">id: @sale.Id</a>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+
+        <nav aria-label="Page navigation" class="position-absolute bottom-0 start-50 translate-middle-x">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Önceki">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Sonraki">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
-   
+
 </div>
 
 

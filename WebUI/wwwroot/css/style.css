@@ -7,6 +7,8 @@
     --contact-font-size: 1.4rem;
     --footer-background-color: #393E46;
     --home-font-size: 1.4rem;
+    --mobile-home-font-size: 1.1rem;
+    --logo-red: #E11322;
 }
 
 body {
@@ -28,24 +30,33 @@ body {
     width: 70%;
 }
 
-.navbar{
+.navbar {
     background-color: var(--navbar-background-color) !important;
 }
 
-.navbar-nav{
-    margin-left:auto;
+.navbar-nav {
+    margin-left: auto;
 }
 
-.Sales, .Login, .Register, .About{
-    min-height:70vh;
+.Sales, .Login, .Register, .About {
+    min-height: 70vh;
 }
 
-footer{
-    background-color:var(--footer-background-color);
+footer {
+    background-color: var(--footer-background-color);
 }
 
-footer a{
-    text-decoration:none;
+footer a {
+    text-decoration: none;
+    height:35px;
+}
+
+footer a:hover {
+    color: var(--logo-red);
+}
+
+.Social-links a:hover {
+    color: var(--logo-red);
 }
 
 
@@ -53,8 +64,8 @@ footer a{
     font-size: var(--home-font-size);
 }
 
-.Home-cards img{
-    width:270px;
+.Home-cards img {
+    width: 270px;
 }
 
 .About {
@@ -65,24 +76,39 @@ footer a{
     clip-path: polygon(36% 3%, 93% 16%, 95% 77%, 75% 100%, 17% 91%, 3% 64%, 0 29%);
 }
 
-.Contact{
-    font-size:var(--contact-font-size);
+.Contact {
+    font-size: var(--contact-font-size);
 }
+
+
 
 #map {
     height: 400px;
     width: 100%;
-    min-width:280px;
+    min-width: 280px;
 }
+
+
+
 
 @media only screen and (max-width: 770px) {
     .Mobile-order1 {
-        order:1;
+        order: -1;
     }
 
-    .slider-text{
-        display:none !important;
+    .slider-text {
+        display: none !important;
     }
-    
-  
+
+    .Home-cards {
+        font-size: var(--mobile-home-font-size);
+    }
+
+        .Home-cards p {
+            margin-top: 20px;
+        }
+
+        .Home-cards img {
+            width: 200px;
+        }
 }
