@@ -15,12 +15,10 @@ namespace WebUI.Controllers
     public class SalesController : Controller
     {
         private ISaleService _saleService;
-        private IHostingEnvironment _hostingEnvironment;
 
-        public SalesController(ISaleService saleService, IHostingEnvironment hostingEnvironment)
+        public SalesController(ISaleService saleService)
         {
             _saleService = saleService;
-            _hostingEnvironment = hostingEnvironment;
         }
 
         public IActionResult Index()
