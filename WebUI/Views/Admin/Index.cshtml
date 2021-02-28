@@ -1,5 +1,49 @@
 ﻿@{
     Layout = "_AdminLayout";
 }
+@model List<Entities.Concrete.Sale>
 
-<h2 class="pt-2">Hoşgeldiniz</h2>
+@{
+    ViewBag.Title = "Yönetim Paneli";
+}
+
+
+<div class="container Sales position-relative">
+    <div class="row d-flex Sales-row">
+
+        @if (Model != null && Model.Count > 0)
+        {
+            @await Html.PartialAsync("_updateSaleCard", Model)
+        }
+        else
+        {
+            <div class="alert alert-warning myAlert">
+                @ViewBag.updateResult
+            </div>
+        }
+@if (ViewBag.deleteResult != null)
+{
+    <div class="alert alert-warning myAlert">
+        <p>@TempData["deleteResult"].ToString()</p>
+    </div>
+} 
+    </div>
+
+    <nav aria-label="Page navigation" class="position-absolute bottom-0 start-50 translate-middle-x">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Önceki">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Sonraki">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

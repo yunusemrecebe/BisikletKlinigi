@@ -7,7 +7,7 @@
     <div class="card-body">
         <h5 class="card-title">@sale.Topic</h5>
         <p class="card-text">@sale.Description</p>
-        <span class="card-money">@sale.Price&#8378</span>
+        <span class="card-money">@String.Format("{0:0,0.00}", sale.Price)  &#8378</span>
         <a href="/Sales/Details/@sale.Id" class="btn btn-danger">Detayları Gör</a>
     </div>
 </div>

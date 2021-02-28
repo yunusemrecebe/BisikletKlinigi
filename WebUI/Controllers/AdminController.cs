@@ -25,6 +25,14 @@ namespace WebUI.Controllers
 
         public IActionResult Index()
         {
+            var result = _saleService.GetAll();
+            if (result.Success)
+            {
+                ViewBag.indexResult = result.Message;
+                return View(result.Data);
+            }
+
+            ViewBag.indexResult = result.Message;
             return View();
         }
 
@@ -102,22 +110,55 @@ namespace WebUI.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Update(int id)
         {
             var sale = _saleService.GetById(id);
-            if (sale.Data != null)
+            if (sale!=null)
             {
-                sale.Data.Description = "Test";
-                var result = _saleService.Update(sale.Data);
-
-                if (result.Success)
+                if (sale.Success)
                 {
-                    ViewBag.updateResult = result.Message;
-                    return View();
+                    ViewBag.updateResult = sale.Success;
+                    TempData["oldImage"] = sale.Data.Image;
+                    return View(sale.Data);
                 }
             }
 
-            ViewBag.updateResult = "Ürün Güncellenemedi!";
+            ViewBag.updateResult = null;
+            ViewBag.updateMessage = sale.Message;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(Sale sale, IFormFile? Image)
+        {
+            if (Image != null)
+            {
+                var extension = Path.GetExtension(Image.FileName);
+                var fileName = string.Format($"bisikletKlinigi{Guid.NewGuid()}{extension}");
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img\\uploads", fileName);
+                sale.Image = fileName;
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await Image.CopyToAsync(stream);
+                }
+            }
+            else
+            {
+                sale.Image = TempData["oldImage"].ToString();
+            }
+
+            sale.Owner = 1;
+            var result = _saleService.Update(sale);
+            if (result.Success)
+            {
+                ViewBag.updateResult = result.Message;
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.updateResult = null;
+            ViewBag.updateMessage = result.Message;
             return View();
         }
 
@@ -129,11 +170,11 @@ namespace WebUI.Controllers
             if (result.Success)
             {
                 ViewBag.deleteResult = result.Message;
-                return View("Index");
+                return RedirectToAction("Index");
             }
 
-            ViewBag.deleteResult = result.Message;
-            return View("Index");
+            TempData["deleteResult"] = result.Message;
+            return RedirectToAction("Index");
         }
     }
 }

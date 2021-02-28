@@ -1,44 +1,154 @@
 ﻿@{
     Layout = "_AdminLayout";
 }
-@model List<Entities.Concrete.Sale>
+@model Entities.Concrete.Sale
 
 @{
-    ViewBag.Title = "Satış Güncelle";
+    ViewBag.Title = "Yönetim Paneli - İlan Güncelle";
 }
 
 
-<div class="container Sales position-relative">
-    <div class="row d-flex Sales-row">
+@if (ViewBag.updateResult != null)
+{
 
-        @if (Model.Count > 0)
-        {
-            @await Html.PartialAsync("_updateSaleCard", Model)
-        }
-        else
-        {
-            <div class="alert alert-warning myAlert">
-                Satılık bisiklet ilanı bulunamadı!
+    <div class="container">
+
+        <form class="row mt-4 g-3 pb-5" method="post" asp-controller="Sales" asp-action="Create" enctype="multipart/form-data">
+
+            <div class="col-md-4">
+                <label for="Topic" class="form-label">Başlık</label>
+                <input type="text" name="Topic" class="form-control" value="@Model.Topic">
             </div>
-        }
+
+            <div class="col-md-4">
+                <label for="Price" class="form-label">Fiyat</label>
+                <input type="number" name="Price" class="form-control" value="@Model.Price">
+            </div>
+
+            <div class="col-md-4">
+                <label for="Genre" class="form-label">Tür</label>
+                <select id="Genre" name="Genre" class="form-select">
+                    <option selected value="@Model.Genre">@Model.Genre</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="col-md-12">
+                <label for="Description" class="form-label">Açıklama</label>
+                <textarea class="form-control" name="Description" rows="3">@Model.Description</textarea>
+            </div>
+
+            <div class="col-md-4">
+                <label for="Brand" class="form-label">Marka</label>
+                <select id="Brand" name="Brand" class="form-select">
+                    <option selected value="@Model.Brand">@Model.Brand</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="Model" class="form-label">Model</label>
+                <select id="Model" name="Model" class="form-select">
+                    <option selected value="@Model.Model">@Model.Model</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="FrameSize" class="form-label">Frame boyutu</label>
+                <select id="FrameSize" name="FrameSize" class="form-select">
+                    <option selected value="@Model.FrameSize">@Model.FrameSize</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="WheelSize" class="form-label">Tekerlek boyutu</label>
+                <select id="WheelSize" name="WheelSize" class="form-select">
+                    <option selected value="@Model.WheelSize">@Model.WheelSize</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="BrakeSystem" class="form-label">Fren sistemi</label>
+                <select id="BrakeSystem" name="BrakeSystem" class="form-select">
+                    <option selected value="@Model.BrakeSystem">@Model.BrakeSystem</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="ForkType" class="form-label">Maşa tipi</label>
+                <select id="ForkType" name="ForkType" class="form-select">
+                    <option selected value="@Model.ForkType">@Model.ForkType</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="Speed" class="form-label">Vites Sayısı</label>
+                <select id="Speed" name="Speed" class="form-select">
+                    <option selected value="@Model.Speed">@Model.Speed</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="Warranty" class="form-label">Garanti Durumu</label>
+                <select id="Warranty" name="Warranty" class="form-select">
+                    <option selected value="@Model.Warranty">@Model.Warranty</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="RearDerailleur" class="form-label">Arka vites</label>
+                <select id="RearDerailleur" name="RearDerailleur" class="form-select">
+                    <option selected value="@Model.RearDerailleur">@Model.RearDerailleur</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="FrontDerailleurs" class="form-label">Ön vites</label>
+                <select id="FrontDerailleurs" name="FrontDerailleurs" class="form-select">
+                    <option selected value="@Model.FrontDerailleurs">@Model.FrontDerailleurs</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="Crankset" class="form-label">Aynakol</label>
+                <select id="Crankset" name="Crankset" class="form-select">
+                    <option selected value="@Model.Crankset">@Model.Crankset</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="Shifters" class="form-label">Vites Değiştirici</label>
+                <select id="Shifters" name="Shifters" class="form-select">
+                    <option selected value="@Model.Shifters">@Model.Shifters</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="Image" class="form-label">Fotoğraflar</label>
+                <input class="form-control" name="Image" type="file" id="Image" multiple>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Gönder</button>
+            </div>
+        </form>
 
     </div>
-
-    <nav aria-label="Page navigation" class="position-absolute bottom-0 start-50 translate-middle-x">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Önceki">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Sonraki">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</div>
+}
+else
+{
+    <div class="alert alert-warning myAlert">
+        @ViewBag.updateMessage
+    </div>
+}

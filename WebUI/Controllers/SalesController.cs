@@ -34,12 +34,11 @@ namespace WebUI.Controllers
            
             if (result.Success)
             {
-                ViewBag.Description = result.Data.Description;
-                ViewBag.Image = result.Data.Image;
-                return View();
+                ViewBag.detailsResult = result.Success;
+                return View(result.Data);
             }
-               
-            ViewBag.Description = "Ürün bulunamadı!";
+
+            ViewBag.detailsMessage = result.Message;
             return View();
         }
     }
