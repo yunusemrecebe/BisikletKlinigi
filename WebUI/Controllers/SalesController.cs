@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
 using DataAccess.Abstract;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -12,10 +15,12 @@ namespace WebUI.Controllers
     public class SalesController : Controller
     {
         private ISaleService _saleService;
+        private IHostingEnvironment _hostingEnvironment;
 
-        public SalesController(ISaleService saleService)
+        public SalesController(ISaleService saleService, IHostingEnvironment hostingEnvironment)
         {
             _saleService = saleService;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         public IActionResult Index()
@@ -32,8 +37,19 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Sale sale)
+        public IActionResult Create(Sale sale, IFormFile ImagePath)
         {
+
+            var images = Path.Combine(_environment.WebRootPath, "images");
+            if (sale.ImagePath.Length > 0)
+            {
+                using (var fileStream = new FileStream(Path.Combine(images, sale.ImagePath.FileName), FileMode.Create))
+                {
+                    sale.ImagePath.CopyToAsync(fileStream);
+                }
+            }
+            sale.Image = sale.ImagePath.FileName;
+
             var result = _saleService.Add(sale);
             if (result.Success)
             {
