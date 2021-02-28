@@ -25,7 +25,7 @@ namespace WebUI.Controllers
         {
             var result = _saleService.GetAll();
             ViewBag.result = result.Data;
-            return View();
+            return View(result.Data);
         }
 
         public IActionResult Details(int id)

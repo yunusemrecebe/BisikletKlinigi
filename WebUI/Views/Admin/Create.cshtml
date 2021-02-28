@@ -1,26 +1,29 @@
-﻿@if (ViewBag.createSuccess != null)
+﻿@{
+    Layout = "_AdminLayout";
+}
+
+
+@if (ViewBag.createSuccess != null)
 {
     <h1>@ViewBag.createSuccess</h1>
 }
 <div class="container">
 
-    <form class="row g-3" method="post" asp-controller="Sales" asp-action="Create" enctype="multipart/form-data">
+    <form class="row mt-4 g-3" method="post" asp-controller="Sales" asp-action="Create" enctype="multipart/form-data">
+
         <div class="col-md-4">
-            <label for="Owner" class="form-label">Sahibi</label>
-            <input type="text" name="Owner" class="form-control" id="Owner">
+            <label for="Topic" class="form-label">Başlık</label>
+            <input type="text" name="Topic" class="form-control" id="Topic">
+        </div>
+
+        <div class="col-md-4">
+            <label for="Price" class="form-label">Fiyat</label>
+            <input type="number" name="Price" class="form-control" id="Price">
         </div>
 
         <div class="col-md-4">
             <label for="Genre" class="form-label">Tür</label>
             <select id="Genre" name="Genre" class="form-select">
-                <option selected value="1">1</option>
-                <option value="2">2</option>
-            </select>
-        </div>
-
-        <div class="col-md-4">
-            <label for="Topic" class="form-label">Başlık</label>
-            <select id="Topic" name="Topic" class="form-select">
                 <option selected value="1">1</option>
                 <option value="2">2</option>
             </select>
@@ -32,13 +35,16 @@
         </div>
 
         <div class="col-md-4">
-            <label for="Price" class="form-label">Fiyat</label>
-            <input type="number" name="Price" class="form-control" id="Price">
+            <label for="Brand" class="form-label">Marka</label>
+            <select id="Brand" name="Brand" class="form-select">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+            </select>
         </div>
 
         <div class="col-md-4">
-            <label for="Brand" class="form-label">Marka</label>
-            <select id="Brand" name="Brand" class="form-select">
+            <label for="Model" class="form-label">Model</label>
+            <select id="Model" name="Model" class="form-select">
                 <option selected value="1">1</option>
                 <option value="2">2</option>
             </select>
@@ -55,6 +61,14 @@
         <div class="col-md-4">
             <label for="WheelSize" class="form-label">Tekerlek boyutu</label>
             <select id="WheelSize" name="WheelSize" class="form-select">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="BrakeSystem" class="form-label">Fren sistemi</label>
+            <select id="BrakeSystem" name="BrakeSystem" class="form-select">
                 <option selected value="1">1</option>
                 <option value="2">2</option>
             </select>
@@ -127,4 +141,3 @@
     </form>
 
 </div>
-<
