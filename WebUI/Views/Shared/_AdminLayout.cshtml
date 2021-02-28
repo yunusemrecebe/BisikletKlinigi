@@ -12,6 +12,10 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
+
+
+    @await Html.PartialAsync("_adminLayout")
+
     @await Html.PartialAsync("_adminSidebar")
 
     @RenderBody()
