@@ -1,8 +1,8 @@
 ﻿<div class="container Login">
     <h1>Giriş yap</h1>
-    @if (@ViewBag.error != null)
+    @if (@ViewBag.loginResult != null)
     {
-        <h3>@ViewBag.error</h3>
+        <h3>@ViewBag.loginResult</h3>
     }
 
     <form action="/Admin/Login" method="post" class="Portal-kayit-form">

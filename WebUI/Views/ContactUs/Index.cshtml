@@ -19,22 +19,20 @@
         </div>
 
     </div>
-    @if (@ViewBag.result != null)
-    {
-        <h3>@ViewBag.result</h3>
-    }
-    @if (@ViewBag.error != null)
-    {
-        <h3>@ViewBag.error</h3>
-    }
+    
     <section class="align-center text-center">
         <div class="container align-items-center">
             <hr>
             <h2>İletişime Geçin</h2>
             <p>Düşüncelerinizi iletişim formuyla iletmekten çekinmeyin.</p>
 
-            <div class="col-md-6" style="margin:auto">
-
+            <div class="col-md-6" style="margin: auto">
+                @if (TempData["ContactSendMessageResult"] != null)
+                {
+                    <hr/>
+                    <h1 style="color: red;">@TempData["ContactSendMessageResult"]</h1>
+                    <hr/>
+                }
                 <form method="POST" action="/ContactUs/SendMessage" class="form-horizontal">
                     <div class="form-group">
                         <label for="Name">İsim</label>

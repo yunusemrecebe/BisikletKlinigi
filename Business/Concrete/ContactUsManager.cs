@@ -22,30 +22,64 @@ namespace Business.Concrete
 
         public IResult Add(ContactUs contactUs)
         {
-            _contactUsDal.Add(contactUs);
-            return new SuccessResult(Messages.MessagesAdded);
+            try
+            {
+                _contactUsDal.Add(contactUs);
+                return new SuccessResult(Messages.MessagesAdded);
+            }
+            catch (Exception e)
+            {
+                return new ErrorResult(Messages.MessagesCanNotAdded);
+                throw;
+            }
         }
 
         public IResult Delete(ContactUs contactUs)
         {
-            _contactUsDal.Delete(contactUs);
-            return new SuccessResult(Messages.MessageDeleted);
-        }
-
-        public IDataResult<List<ContactUs>> GetAll()
-        {
-            return new SuccessDataResult<List<ContactUs>>(_contactUsDal.GetAll(),Messages.MessagesListed);
-        }
-
-        public IDataResult<ContactUs> GetById(int contactId)
-        {
-            return new ErrorDataResult<ContactUs>(_contactUsDal.Get(x=>x.Id == contactId));
+            try
+            {
+                _contactUsDal.Delete(contactUs);
+                return new SuccessResult(Messages.MessageDeleted);
+            }
+            catch (Exception e)
+            {
+                return new ErrorResult(Messages.MessageCanNotDeleted);
+                throw;
+            }
         }
 
         public IResult Update(ContactUs contactUs)
         {
-            _contactUsDal.Update(contactUs);
-            return new SuccessResult(Messages.MessageUpdated);
+            try
+            {
+                _contactUsDal.Update(contactUs);
+                return new SuccessResult(Messages.MessageUpdated);
+            }
+            catch (Exception e)
+            {
+                return new ErrorResult(Messages.MessageCanNotUpdated);
+                throw;
+            }
+        }
+
+        public IDataResult<List<ContactUs>> GetAll()
+        {
+            var result = _contactUsDal.GetAll();
+            if (result != null)
+            {
+                return new SuccessDataResult<List<ContactUs>>(result, Messages.MessagesListed);
+            }
+            return new ErrorDataResult<List<ContactUs>>(Messages.MessagesCanNotListed);
+        }
+
+        public IDataResult<ContactUs> GetById(int contactId)
+        {
+            var result = _contactUsDal.Get(x => x.Id == contactId);
+            if (result != null)
+            {
+                return new ErrorDataResult<ContactUs>(result,Messages.MessagesListed);
+            }
+            return new ErrorDataResult<ContactUs>(Messages.MessagesCanNotListed);
         }
     }
 }

@@ -34,12 +34,13 @@ namespace WebUI.Controllers
         public IActionResult Login(string mail, string password)
         {
             var result = _userService.Login(mail,password);
-            if (result.Data != null)
+            if (result.Success)
             {
+                ViewBag.loginResult = result.Message;
                 return RedirectToAction("Index");
             }
 
-            ViewBag.error = "hatalı giriş yaptınız!";
+            ViewBag.loginResult = result.Message;
             return View();
         }
 
@@ -56,10 +57,11 @@ namespace WebUI.Controllers
             var result = _userService.Add(user);
             if (result.Success)
             {
+                ViewBag.registerResult = result.Message;
                 return RedirectToAction("Login");
             }
 
-            ViewBag.error = "Kayıt olunamadı!";
+            ViewBag.registerResult = result.Message;
             return View();
         }
     }

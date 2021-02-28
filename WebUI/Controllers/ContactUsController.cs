@@ -29,10 +29,10 @@ namespace WebUI.Controllers
 
             if (result.Success)
             {
-                ViewBag.result = result.Message;
+                TempData["ContactSendMessageResult"] = result.Message;
                 return RedirectToAction("Index");
             }
-            ViewBag.error = "Mesaj gönderilemedi!";
+            TempData["ContactSendMessageResult"] = result.Message;
             return RedirectToAction("Index");
         }
     }
