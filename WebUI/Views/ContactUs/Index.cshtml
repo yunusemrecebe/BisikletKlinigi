@@ -13,9 +13,7 @@
         </div>
 
         <div class="col">
-            <div id="map">
-
-            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12043.729537165018!2d28.529059237304352!3d41.00485311881609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b55d80ded6341f%3A0xa85e63bd0cefceb!2zTWltYXJvYmEsIDM0NTM1IELDvHnDvGvDp2VrbWVjZS_EsHN0YW5idWw!5e0!3m2!1str!2str!4v1614537317166!5m2!1str!2str"  style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
 
     </div>
@@ -34,23 +32,29 @@
                     <hr/>
                 }
                 <form method="POST" action="/ContactUs/SendMessage" class="form-horizontal">
-                    <div class="form-group">
-                        <label for="Name">İsim</label>
-                        <input type="text" class="form-control" name="Name" placeholder="İsim">
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="Name">İsim</label>
+                                <input type="text" class="form-control" name="Name" placeholder="İsim">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="LastName">Soyisim</label>
+                                <input type="text" class="form-control" name="LastName" placeholder="Soyisim">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="LastName">Soyisim</label>
-                        <input type="text" class="form-control" name="LastName" placeholder="Soyisim">
-                    </div>
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <label for="Email">Email</label>
                         <input type="email" class="form-control" name="Email" placeholder="isimsoyisim@example.com">
                     </div>
-                    <div class="form-group ">
+                    <div class="form-group mt-3">
                         <label for="Message">Mesaj</label>
                         <textarea class="form-control" name="Message" placeholder="Buradan bir mesaj gönderebilirsiniz!"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-danger btn-lg mt-2">Gönder</button>
+                    <button type="submit" class="btn btn-danger btn-lg mt-3">Gönder</button>
                 </form>
 
                 <hr>

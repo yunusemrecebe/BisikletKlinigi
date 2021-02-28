@@ -2,12 +2,12 @@
 
 @foreach(var sale in Model)
 {
-<div class="card Sales-card m-2 p-0" style="width: 18rem;">
+<div class="card Sales-card m-2 p-0 d-flex" style="width: 18rem;">
     <img src="~/img/uploads/@sale.Image" class="card-img-top" alt="bisiklet kliniği, bisiklet servisi">
     <div class="card-body">
         <h5 class="card-title">@sale.Topic</h5>
         <p class="card-text">@sale.Description</p>
-        <span>@sale.Price</span>
+        <span class="card-money">@sale.Price&#8378</span>
         <a href="/Sales/Details/@sale.Id" class="btn btn-danger">Detayları Gör</a>
     </div>
 </div>
