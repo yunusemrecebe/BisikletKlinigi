@@ -1,7 +1,3 @@
-
-
-
-
 function initMap() {
 
     const bisikletMarket = { lat: -25.344, lng: 131.036 };
@@ -16,3 +12,4 @@ function initMap() {
         map: map,
     });
 }
+
