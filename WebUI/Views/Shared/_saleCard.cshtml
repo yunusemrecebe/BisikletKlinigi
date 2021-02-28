@@ -1,0 +1,11 @@
+﻿@model Sale
+
+<div class="card m-2 p-0" style="width: 18rem;">
+    <img src="~/img/uploads/@Model.Image" class="card-img-top" alt="bisiklet kliniği, bisiklet servisi">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Topic</h5>
+        <p class="card-text">@Model.Description</p>
+        <span>@Model.Price</span>
+        <a href="/Sales/Details/@Model.Id" class="btn btn-danger">Detayları Gör</a>
+    </div>
+</div>
