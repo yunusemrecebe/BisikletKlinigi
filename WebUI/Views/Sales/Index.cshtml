@@ -5,7 +5,7 @@
         <h1> Satıştaki Bisikletler </h1>
 
         <div class="container border border-5 Sales position-relative">
-            <div class="row d-flex justify-content-center">
+            <div class="row d-flex Sales-row">
 
                 @*@if (@Model.Id > 0)
                 {
@@ -18,11 +18,11 @@
                     </div>
                 }*@
 
-                @foreach (var sale in (List<Entities.Concrete.Sale>)ViewBag.result)
+                @foreach (var sale in ViewBag.result)
                 {
                     @*@await Html.PartialAsync("_saleCard", Sales)*@
 
-                    <div class="card m-2 p-0" style="width: 18rem;">
+                    <div class="card Sales-card m-2 p-0" style="width: 18rem;">
                         <img src="~/img/uploads/@sale.Image" class="card-img-top" alt="bisiklet kliniği, bisiklet servisi">
                         <div class="card-body">
                             <h5 class="card-title">@sale.Topic</h5>

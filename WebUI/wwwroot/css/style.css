@@ -80,7 +80,9 @@ footer a:hover {
     font-size: var(--contact-font-size);
 }
 
-
+.Sales-card img {
+    height: 50% !important;
+}
 
 #map {
     height: 400px;
@@ -99,6 +101,16 @@ footer a:hover {
     .slider-text {
         display: none !important;
     }
+
+    .Sales-row{
+        justify-content:center;
+    }
+
+    .Sales-card{
+        width:12rem !important;
+    }
+
+    
 
     .Home-cards {
         font-size: var(--mobile-home-font-size);
