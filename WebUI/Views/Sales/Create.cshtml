@@ -2,4 +2,129 @@
 {
     <h1>@ViewBag.createSuccess</h1>
 }
-Satış İlanı Ekle
+<div class="container">
+
+    <form class="row g-3" method="post" action="/Sales/Create" enctype='multipart/form-data'>
+        <div class="col-md-4">
+            <label for="Owner" class="form-label">Sahibi</label>
+            <input type="text" name="Owner" class="form-control" id="Owner">
+        </div>
+
+        <div class="col-md-4">
+            <label for="Genre" class="form-label">Tür</label>
+            <select id="Genre" name="Genre" class="form-select">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="Topic" class="form-label">Başlık</label>
+            <select id="Topic" name="Topic" class="form-select">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+        <div class="col-md-12">
+            <label for="Description" class="form-label">Açıklama</label>
+            <textarea class="form-control" name="Description" id="Description" rows="3"></textarea>
+        </div>
+
+        <div class="col-md-4">
+            <label for="Price" class="form-label">Fiyat</label>
+            <input type="number" name="Price" class="form-control" id="Price">
+        </div>
+
+        <div class="col-md-4">
+            <label for="Brand" class="form-label">Marka</label>
+            <select id="Brand" name="Brand" class="form-select">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="FrameSize" class="form-label">Frame boyutu</label>
+            <select id="FrameSize" name="FrameSize" class="form-select">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="WheelSize" class="form-label">Tekerlek boyutu</label>
+            <select id="WheelSize" name="WheelSize" class="form-select">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="ForkType" class="form-label">Maşa tipi</label>
+            <select id="ForkType" name="ForkType" class="form-select">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="Speed" class="form-label">Hız</label>
+            <select id="Speed" name="Speed" class="form-select">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="Warranty" class="form-label">Garanti</label>
+            <select id="Warranty" name="Warranty" class="form-select">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="RearDerailleur" class="form-label">Arka vites</label>
+            <select id="RearDerailleur" name="RearDerailleur" class="form-select">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="FrontDerailleurs" class="form-label">Ön vites</label>
+            <select id="FrontDerailleurs" name="FrontDerailleurs" class="form-select">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="Crankset" class="form-label">Aynakol</label>
+            <select id="Crankset" name="Crankset" class="form-select">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="Shifters" class="form-label">Vites Değiştirici</label>
+            <select id="Shifters" name="Shifters" class="form-select">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="Image" class="form-label">Fotoğraflar</label>
+            <input class="form-control" name="Image" type="file" id="Image" multiple>
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Gönder</button>
+        </div>
+    </form>
+
+</div>
+<
