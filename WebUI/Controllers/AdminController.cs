@@ -99,7 +99,7 @@ namespace WebUI.Controllers
                 }
             }
 
-            sale.Owner = 1;
+            sale.Owner = 6;
             var result = _saleService.Add(sale);
             if (result.Success)
             {

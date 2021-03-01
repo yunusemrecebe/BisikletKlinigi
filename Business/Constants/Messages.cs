@@ -31,12 +31,12 @@ namespace Business.Constants
         public static string SaleCanNotFound = "Aradığınız İlan Bulunamadı!";
 
         //ContactUs Messages
-        public static string MessagesAdded = "Mesaj ekleme işlemi başarılı!";
+        public static string MessagesAdded = "Mesajınız Gönderildi!";
         public static string MessageDeleted = "Mesaj silindi!";
         public static string MessageUpdated = "Mesaj Güncellendi!";
         public static string MessagesListed = "Mesajlar Listelendi";
 
-        public static string MessagesCanNotAdded = "Mesaj ekleme işlemi başarısız oldu!";
+        public static string MessagesCanNotAdded = "Mesajınız Gönderilemedi!";
         public static string MessageCanNotDeleted = "Mesaj silinemedi!";
         public static string MessageCanNotUpdated = "Mesaj Güncellenemedi!";
         public static string MessagesCanNotListed = "Mesajlar Bulunamadı!";
