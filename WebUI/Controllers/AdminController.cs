@@ -196,7 +196,7 @@ namespace WebUI.Controllers
             if (Image != null)
             {
                 var extension = Path.GetExtension(Image.FileName);
-                var fileName = string.Format($"bisikletKlinigi{Guid.NewGuid()}{extension}");
+                var fileName = string.Format($"bisikletKlinigi_{Guid.NewGuid()}{extension}");
                 var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img\\uploads", fileName);
                 sale.Image = fileName;
 
@@ -236,6 +236,7 @@ namespace WebUI.Controllers
             var result = _saleService.Delete(sale.Data);
             if (result.Success)
             {
+                System.IO.File.Delete(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img\\uploads", sale.Data.Image));
                 ViewBag.deleteResult = result.Message;
                 return RedirectToAction("Index");
             }
