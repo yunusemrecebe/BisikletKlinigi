@@ -19,6 +19,9 @@ namespace Business.Constants
         public static string UsersCanNotListed = "Kullanıcılar Bulunamadı!";
         public static string LoginIsNotSucces = "Giriş başarısız!";
 
+        public static string UserisActivated = "Kullanıcı Aktifleştirildi!";
+        public static string UserisInactivated = "Kullanıcı Pasifleştirildi!";
+
         //Sales Messages
         public static string SaleAdded = "İlan ekleme işlemi başarılı!";
         public static string SaleDeleted = "İlan silindi!";

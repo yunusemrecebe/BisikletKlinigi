@@ -1,0 +1,57 @@
+﻿@{
+    Layout = "_AdminLayout";
+}
+@model List<Entities.Concrete.User>
+
+@{
+    ViewBag.Title = "Yönetim Paneli - Kullanıcı Yönetimi";
+}
+
+
+@if (ViewBag.showUsersResult != true)
+{
+    <h1>@ViewBag.showUserErrorMessage</h1>
+}
+else
+{
+   
+    @if (TempData["userManagementMessage"] != null)
+    {
+        <h1 class="text-center">@TempData["userManagementMessage"]</h1>
+    }
+
+    <h1>Tüm Kullanıcılar</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">İsim</th>
+                <th scope="col">Soyisim</th>
+                <th scope="col">E-Mail</th>
+                <th scope="col">Durum</th>
+                <th class="text-center" scope="col">Yönetim</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var user in @Model.Where(x=> x.Id != ViewBag.userId))
+            {
+            <tr>
+                <td class="align-middle">@user.Name </td>
+                <td class="align-middle">@user.LastName</td>
+                <td class="align-middle">@user.Email</td>
+                <td class="align-middle">@(user.Role== 1 ? "Pasif" : "Aktif")</td>
+                <td class="text-center">
+                    <div class="btn-group" role="group">
+                        <a href="/admin/UserActivate/@user.Id" type="button" class="btn btn-success">Aktifleştir</a>
+                        <a href="/admin/UserPassive/@user.Id" type="button" class="btn btn-warning">Pasifleştir</a>
+                        <a href="/admin/UserDelete/@user.Id" type="button" class="btn btn-danger">Hesabı Sil</a>
+                    </div>
+                </td>
+            </tr>
+            }
+
+
+        </tbody>
+    </table>
+}

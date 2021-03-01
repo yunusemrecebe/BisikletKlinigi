@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Business.Constants;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using WebUI.Models;
@@ -30,7 +31,7 @@ namespace WebUI.Controllers
                 HttpContext.Session.SetString("isUserLogin", "false");
             }
 
-            if (HttpContext.Session.GetString("isUserLogin") == "true")
+            if (HttpContext.Session.GetString("isUserLogin") == "true" && HttpContext.Session.GetInt32("userRole") == 2)
             {
                 var result = _saleService.GetAll();
                 if (result.Success)
@@ -64,6 +65,9 @@ namespace WebUI.Controllers
 
                 //Save the userId
                 HttpContext.Session.SetInt32("userId", result.Data.Id);
+
+                //Save the userRole
+                HttpContext.Session.SetInt32("userRole", result.Data.Role);
 
                 return RedirectToAction("Index");
             }
@@ -106,8 +110,14 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult userManagement()
+        public IActionResult UserManagement()
         {
+            if (HttpContext.Session.GetString("isUserLogin") != "true" || HttpContext.Session.GetInt32("userRole") == 1)
+            {
+                TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
+                return RedirectToAction("Login");
+            }
+
             var user = Convert.ToInt32(HttpContext.Session.GetInt32("userId"));
             var result = _userService.GetById(user);
             if (result.Success)
@@ -121,14 +131,14 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult userManagement(User user)
+        public IActionResult UserManagement(User user)
         {
             var result = _userService.Update(user);
             if (result.Success)
             {
                 //ViewBag.userManagementResult = result.Success;
                 //ViewBag.userManagementMessage = result.Message;
-                return RedirectToAction("userManagement", user.Id);
+                return RedirectToAction("UserManagement", user.Id);
             }
             ViewBag.userManagementResult = true;
             ViewBag.userManagementMessage = result.Message;
@@ -136,9 +146,79 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
+        public IActionResult ShowAllUsers()
+        {
+
+            if (HttpContext.Session.GetString("isUserLogin") != "true" || HttpContext.Session.GetInt32("userRole") == 1)
+            {
+                TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
+                return RedirectToAction("Login");
+            }
+
+            var result = _userService.GetAll();
+            if (result.Success)
+            {
+                ViewBag.userId = Convert.ToInt32(HttpContext.Session.GetInt32("userId"));
+                ViewBag.showUsersResult = result.Success;
+                return View(result.Data);
+            }
+
+            ViewBag.showUserErrorMessage = result.Message;
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult UserActivate(int id)
+        {
+            var user = _userService.GetById(id);
+            user.Data.Role = 2;
+            var result = _userService.Update(user.Data);
+            if (result.Success)
+            {
+                TempData["userManagementMessage"] = Messages.UserisActivated;
+                return RedirectToAction("ShowAllUsers");
+            }
+
+            TempData["userManagementMessage"] = result.Message;
+            return RedirectToAction("ShowAllUsers");
+        }
+
+        [HttpGet]
+        public IActionResult UserPassive(int id)
+        {
+            var user = _userService.GetById(id);
+            user.Data.Role = 1;
+            var result = _userService.Update(user.Data);
+            if (result.Success)
+            {
+                TempData["userManagementMessage"] = Messages.UserisInactivated;
+                return RedirectToAction("ShowAllUsers");
+            }
+
+            TempData["userManagementMessage"] = result.Message;
+            return RedirectToAction("ShowAllUsers");
+        }
+
+        [HttpGet]
+        public IActionResult UserDelete(int id)
+        {
+            var user = _userService.GetById(id);
+
+            var result = _userService.Delete(user.Data);
+            if (result.Success)
+            {
+                TempData["userManagementMessage"] = result.Message;
+                return RedirectToAction("ShowAllUsers");
+            }
+
+            TempData["userManagementMessage"] = result.Message;
+            return RedirectToAction("ShowAllUsers");
+        }
+
+        [HttpGet]
         public IActionResult Create()
         {
-            if (HttpContext.Session.GetString("isUserLogin") != "true")
+            if (HttpContext.Session.GetString("isUserLogin") != "true" || HttpContext.Session.GetInt32("userRole") == 1)
             {
                 TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
                 return RedirectToAction("Login");
@@ -177,7 +257,7 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-            if (HttpContext.Session.GetString("isUserLogin") != "true")
+            if (HttpContext.Session.GetString("isUserLogin") != "true" || HttpContext.Session.GetInt32("userRole") == 1)
             {
                 TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
                 return RedirectToAction("Login");
@@ -234,7 +314,7 @@ namespace WebUI.Controllers
 
         public IActionResult Delete(int id)
         {
-            if (HttpContext.Session.GetString("isUserLogin") != "true")
+            if (HttpContext.Session.GetString("isUserLogin") != "true" || HttpContext.Session.GetInt32("userRole") == 1)
             {
                 TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
                 return RedirectToAction("Login");
