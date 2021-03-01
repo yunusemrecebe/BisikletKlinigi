@@ -2,12 +2,13 @@
     Layout = "_noLayout";
 }
 
-
 <div class="container Login">
     <h1>Giriş yap</h1>
-    @if (@ViewBag.loginResult != null)
+
+    @if (TempData["userIsNotLogin"] != null)
     {
-        <h3>@ViewBag.loginResult</h3>
+        <h1 style="color: red; text-align: center;">@TempData["userIsNotLogin"]</h1>
+        @(TempData["userIsNotLogin"] = null);
     }
 
     <form action="/Admin/Login" method="post" class="Portal-kayit-form">

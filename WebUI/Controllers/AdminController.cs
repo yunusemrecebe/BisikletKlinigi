@@ -25,16 +25,27 @@ namespace WebUI.Controllers
 
         public IActionResult Index()
         {
-            var result = _saleService.GetAll();
-            if (result.Success)
+            if (HttpContext.Session.GetString("isUserLogin") == null)
             {
-                ViewBag.indexResult = result.Message;
-                return View(result.Data);
+                HttpContext.Session.SetString("isUserLogin", "false");
             }
 
-            ViewBag.indexResult = result.Message;
-            return View();
-        }
+            if (HttpContext.Session.GetString("isUserLogin") == "true")
+            {
+                var result = _saleService.GetAll();
+                if (result.Success)
+                {
+                    ViewBag.indexResult = result.Message;
+                    return View(result.Data);
+                }
+
+                ViewBag.indexResult = result.Message;
+                return View();
+            }
+            
+            TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
+            return RedirectToAction("Login");
+         }
 
         [HttpGet]
         public IActionResult Login()
@@ -48,17 +59,34 @@ namespace WebUI.Controllers
             var result = _userService.Login(mail,password);
             if (result.Success)
             {
-                ViewBag.loginResult = result.Message;
+                //Save the user login status to true
+                HttpContext.Session.SetString("isUserLogin", "true");
+
+                //Save the userId
+                HttpContext.Session.SetInt32("userId", result.Data.Id);
+
                 return RedirectToAction("Index");
             }
 
+            //if User can not login
             ViewBag.loginResult = result.Message;
             return View();
+        }
+
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index","Home");
         }
 
         [HttpGet]
         public IActionResult Register()
         {
+            if (HttpContext.Session.GetString("isUserLogin") == "true")
+            {
+                return RedirectToAction("Index");
+            }
+
             return View();
         }
 
@@ -80,6 +108,12 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            if (HttpContext.Session.GetString("isUserLogin") != "true")
+            {
+                TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
@@ -99,7 +133,7 @@ namespace WebUI.Controllers
                 }
             }
 
-            sale.Owner = 6;
+            sale.Owner = Convert.ToInt32(HttpContext.Session.GetInt32("userId"));
             var result = _saleService.Add(sale);
             if (result.Success)
             {
@@ -113,6 +147,12 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
+            if (HttpContext.Session.GetString("isUserLogin") != "true")
+            {
+                TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
+                return RedirectToAction("Login");
+            }
+
             var sale = _saleService.GetById(id);
             if (sale!=null)
             {
@@ -149,7 +189,7 @@ namespace WebUI.Controllers
                 sale.Image = TempData["oldImage"].ToString();
             }
 
-            sale.Owner = 1;
+            sale.Owner = Convert.ToInt32(HttpContext.Session.GetInt32("userId"));
             var result = _saleService.Update(sale);
             if (result.Success)
             {
@@ -164,6 +204,12 @@ namespace WebUI.Controllers
 
         public IActionResult Delete(int id)
         {
+            if (HttpContext.Session.GetString("isUserLogin") != "true")
+            {
+                TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
+                return RedirectToAction("Login");
+            }
+
             var sale = _saleService.GetById(id);
 
             var result = _saleService.Delete(sale.Data);
