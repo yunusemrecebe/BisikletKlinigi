@@ -1,12 +1,21 @@
-﻿<nav class="navbar  shadow-sm navbar-expand-lg navbar-light bg-light rounded">
+﻿<nav class="navbar Admin-navbar shadow-sm navbar-expand-lg navbar-light bg-light rounded">
     <div class="container fs-5">
         <a class="navbar-brand align-middle" href="/">
             <img src="/img/logo-kirmizi-borderless.png" alt="" height="100" class="d-inline-block align-top" />
         </a>
 
-        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <a class="btn btn-danger text-center fs-5" href="#" role="button"><i class="bi bi-door-closed"></i>Çıkış</a>
-
-    </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="ms-auto">
+                <a class="btn btn-success text-center fs-5 ms-2" href="/admin/create" role="button"><i class="bi bi-shop"></i>İlan Ekle</a>
+                <a class="btn btn-info text-white text-center fs-5 ms-2" href="/" role="button"><i class="bi bi-person-circle"></i>Kullanıcı Yönetimi</a>
+                <a class="btn btn-danger text-center fs-5 ms-2" href="/" role="button"><i class="bi bi-door-closed"></i>Çıkış</a>
+            </div>
+            
+        </div>
+            
+        </div>
 </nav>
