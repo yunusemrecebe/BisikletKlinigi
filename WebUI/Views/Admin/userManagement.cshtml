@@ -19,84 +19,45 @@ else
     <form class="row mt-4 g-3 pb-2" method="post" asp-controller="Admin" asp-action="UserManagement">
 
         <div class="col-md-6">
+            <input type="hidden" name="Role" class="form-control" value="@Model.Role">
+        </div>
+
+        <div class="col-md-6">
+            <input type="hidden" name="Id" class="form-control" value="@Model.Id">
+        </div>
+
+        <div class="col-md-6">
             <label for="Name" class="form-label">İsim</label>
-            <input type="text" name="Name" class="form-control" id="Topic" value="@Model.Name">
+            <input type="text" name="Name" class="form-control" value="@Model.Name">
         </div>
 
         <div class="col-md-6">
             <label for="LastName" class="form-label">Soyisim</label>
-            <input type="text" name="LastName" class="form-control" id="Topic" value="@Model.LastName">
+            <input type="text" name="LastName" class="form-control" value="@Model.LastName">
         </div>
 
         <div class="col-md-6">
             <label for="Password" class="form-label">Şifre</label>
-            <input type="password" name="Password" class="form-control" id="Topic" value="@Model.Password">
+            <input type="password" name="Password" class="form-control" value="@Model.Password">
         </div>
 
         <div class="col-md-6">
             <label for="Email" class="form-label">E-Mail</label>
-            <input type="email" name="Email" class="form-control" id="Topic" value="@Model.Email">
+            <input type="email" name="Email" class="form-control" value="@Model.Email">
         </div>
 
         <div class="col-md-6">
-
+            <label for="Phone" class="form-label">Telefon</label>
+            <input type="tel" name="Phone" class="form-control" value="@Model.Phone">
         </div>
 
-        <button type="submit" class="btn btn-primary col-md-6">Onayla</button>
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-primary">Onayla</button>
+        </div>
+
+
 
     </form>
-
-    <hr />
-
-    <h1>Tüm Kullanıcılar</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">İsim</th>
-                <th scope="col">Soyisim</th>
-                <th scope="col">Şifre</th>
-                <th scope="col">E-Mail</th>
-                <th scope="col">Yetki</th>
-                <th scope="col">Onay</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>@Model.Name </td>
-                <td>@Model.LastName</td>
-                <td>@Model.Password</td>
-                <td>@Model.Email</td>
-                <td>
-                    <div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                Hesabı aktifleştir
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                Hesabı pasifleştir
-                            </label>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="btn-group" role="group" >
-                    <button type="button" class="btn btn-danger">Sil</button>
-                    <button type="button" class="btn btn-success">Onayla</button>
-                    </div>
-                </td>
-            </tr>
-            
-        </tbody>
-    </table>
-
-
-   
 
 
 

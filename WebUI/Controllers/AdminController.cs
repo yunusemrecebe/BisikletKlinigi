@@ -123,6 +123,15 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult userManagement(User user)
         {
+            var result = _userService.Update(user);
+            if (result.Success)
+            {
+                //ViewBag.userManagementResult = result.Success;
+                //ViewBag.userManagementMessage = result.Message;
+                return RedirectToAction("userManagement", user.Id);
+            }
+            ViewBag.userManagementResult = true;
+            ViewBag.userManagementMessage = result.Message;
             return View();
         }
 
