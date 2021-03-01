@@ -4,12 +4,16 @@
 
 @model User
 
+@{
+    ViewBag.Title = "Yönetim Paneli - Kayıt Ol";
+}
+
 @if (ViewBag.registerResult != null)
 {
     <h1>@ViewBag.registerResult</h1>
 }
 
-<div class="container Register">
+<div class="container Register bg-light" style="max-width:500px !important; height:600px !important; margin-top:10em; opacity:80%;">
     <h1>Kayıt ol</h1>
     <form method="post" action="/Admin/Register/" class="Portal-kayit-form">
         <div class="row">

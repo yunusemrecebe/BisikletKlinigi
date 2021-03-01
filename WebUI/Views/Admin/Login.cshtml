@@ -2,12 +2,16 @@
     Layout = "_noLayout";
 }
 
-<div class="container Login">
-    <h1>Giriş yap</h1>
+@{
+    ViewBag.Title = "Yönetim Paneli - Giriş Yap";
+}
+
+<div class="container rounded Login bg-light align-middle" style="max-width:400px !important; height:400px !important; margin-top:15em; opacity:80%;">
+    <h1 class="text-center">Giriş yap</h1>
 
     @if (TempData["userIsNotLogin"] != null)
     {
-        <h1 style="color: red; text-align: center;">@TempData["userIsNotLogin"]</h1>
+        <h4 style="color: red; text-align: center;">@TempData["userIsNotLogin"]</h4>
         @(TempData["userIsNotLogin"] = null);
     }
 

@@ -38,7 +38,7 @@ body {
     margin-left: auto;
 }
 
-.Sales, .Login, .Register, .About {
+.Sales, .About {
     min-height: 70vh;
 }
 

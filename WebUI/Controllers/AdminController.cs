@@ -106,6 +106,27 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
+        public IActionResult userManagement()
+        {
+            var user = Convert.ToInt32(HttpContext.Session.GetInt32("userId"));
+            var result = _userService.GetById(user);
+            if (result.Success)
+            {
+                ViewBag.userManagementResult = result.Success;
+                return View(result.Data);
+            }
+            ViewBag.userManagementResult = result.Success;
+            ViewBag.userManagementMessage = result.Message;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult userManagement(User user)
+        {
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult Create()
         {
             if (HttpContext.Session.GetString("isUserLogin") != "true")

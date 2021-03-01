@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="/img/logo-kirmizi-borderless.png" />
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
@@ -10,8 +11,16 @@
     <link rel="stylesheet" href="/css/style.css">
 
     <title>@ViewBag.Title</title>
+    <style>
+        body {
+            background: url("https://images.unsplash.com/photo-1503669678209-c68d00b3765d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80");
+            background-repeat: no-repeat;
+            background-color: black;
+            background-size: cover;
+        }
+    </style>
 </head>
-<body>
+<body class="align-middle" style="height:100%">
 
     @RenderBody()
 
