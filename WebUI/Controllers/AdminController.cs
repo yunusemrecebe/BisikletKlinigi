@@ -10,6 +10,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using WebUI.Models;
 using Microsoft.AspNetCore.Http;
+using FeedBacks = Business.Constants.Messages;
 
 namespace WebUI.Controllers
 {
@@ -17,11 +18,13 @@ namespace WebUI.Controllers
     {
         private IUserService _userService;
         private ISaleService _saleService;
+        private IContactUsService _contactUsService;
 
-        public AdminController(IUserService userService, ISaleService saleService)
+        public AdminController(IUserService userService, ISaleService saleService, IContactUsService contactUsService)
         {
             _userService = userService;
             _saleService = saleService;
+            _contactUsService = contactUsService;
         }
 
         public IActionResult Index()
@@ -43,10 +46,25 @@ namespace WebUI.Controllers
                 ViewBag.indexResult = result.Message;
                 return View();
             }
-            
+
             TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
             return RedirectToAction("Login");
-         }
+        }
+
+        [HttpGet]
+        public IActionResult Messages()
+        {
+            var result = _contactUsService.GetAll();
+            if (result.Success)
+            {
+                ViewBag.messageStatus = result.Success;
+                return View(result.Data);
+            }
+
+            ViewBag.messageStatus = result.Success;
+            ViewBag.messagesError = result.Message;
+            return View();
+        }
 
         [HttpGet]
         public IActionResult Login()
@@ -57,7 +75,7 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Login(string mail, string password)
         {
-            var result = _userService.Login(mail,password);
+            var result = _userService.Login(mail, password);
             if (result.Success)
             {
                 //Save the user login status to true
@@ -80,7 +98,7 @@ namespace WebUI.Controllers
         public IActionResult LogOut()
         {
             HttpContext.Session.Clear();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -175,7 +193,7 @@ namespace WebUI.Controllers
             var result = _userService.Update(user.Data);
             if (result.Success)
             {
-                TempData["userManagementMessage"] = Messages.UserisActivated;
+                TempData["userManagementMessage"] = FeedBacks.UserisActivated;
                 return RedirectToAction("ShowAllUsers");
             }
 
@@ -191,7 +209,7 @@ namespace WebUI.Controllers
             var result = _userService.Update(user.Data);
             if (result.Success)
             {
-                TempData["userManagementMessage"] = Messages.UserisInactivated;
+                TempData["userManagementMessage"] = FeedBacks.UserisInactivated;
                 return RedirectToAction("ShowAllUsers");
             }
 
@@ -264,7 +282,7 @@ namespace WebUI.Controllers
             }
 
             var sale = _saleService.GetById(id);
-            if (sale!=null)
+            if (sale != null)
             {
                 if (sale.Success)
                 {
@@ -284,15 +302,31 @@ namespace WebUI.Controllers
         {
             if (Image != null)
             {
+                bool extensionIsChecked = false;
                 var extension = Path.GetExtension(Image.FileName);
-                var fileName = string.Format($"bisikletKlinigi_{Guid.NewGuid()}{extension}");
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img\\uploads", fileName);
-                sale.Image = fileName;
-
-                using (var stream = new FileStream(path, FileMode.Create))
+                if (extension == ".jpg" || extension == ".png")
                 {
-                    await Image.CopyToAsync(stream);
+                    extensionIsChecked = true;
                 }
+                if (extensionIsChecked)
+                {
+                    var fileName = string.Format($"bisikletKlinigi_{Guid.NewGuid()}{extension}");
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img\\uploads", fileName);
+                    sale.Image = fileName;
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await Image.CopyToAsync(stream);
+                    }
+                    System.IO.File.Delete(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img\\uploads", TempData["oldImage"].ToString()));
+                }
+                else
+                {
+                    ViewBag.updateResult = null;
+                    ViewBag.updateMessage = "Yalnızca 'JPG' veya 'PNG' formatındaki görseller yüklenebilir!";
+                    return View();
+                }
+
             }
             else
             {

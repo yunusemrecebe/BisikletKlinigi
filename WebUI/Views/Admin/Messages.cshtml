@@ -1,0 +1,25 @@
+﻿@model List<Entities.Concrete.ContactUs>
+
+@{
+    Layout = "_AdminLayout";
+}
+
+@{
+    ViewBag.Title = "Yönetim Paneli - Mesajlar";
+}
+
+@if (ViewBag.messageStatus = false)
+{
+    <h1 class="text-center">@ViewBag.messagesError</h1>
+}
+else
+{
+    foreach (var message in Model)
+    {
+        <p>@message.FirstName</p>
+        <p>@message.LastName</p>
+        <p>@message.Email</p>
+        <p>@message.Message</p>
+    }
+    
+}
