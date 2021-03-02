@@ -13,9 +13,7 @@
 }
 <div class="container mt-4">
 
-    <h1 class="text-center"> Satılık Bisikletler </h1>
-
-    <div class="container Sales position-relative">
+    <div class="container Sales position-relative mt-5">
         <div class="row d-flex Sales-row">
             @if (ViewBag.result.Count > 0)
             {
@@ -24,7 +22,7 @@
             else
             {
                 <div class="alert alert-warning myAlert">
-                    @ViewBag.indexResult
+                    @ViewBag.saleErrorMessage
                 </div>
             }
 

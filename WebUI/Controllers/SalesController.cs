@@ -7,6 +7,7 @@ using Business.Abstract;
 using WebUI.Models;
 using Microsoft.AspNetCore.Http;
 using X.PagedList;
+using FeedBacks = Business.Constants.Messages;
 
 namespace WebUI.Controllers
 {
@@ -24,7 +25,11 @@ namespace WebUI.Controllers
             var result = _saleService.GetAll();
             if (result.Success)
             {
-                ViewBag.result = result.Data;
+                ViewBag.result = result.Data.Where(x => x.Usage == q).ToList();
+                if (result.Data.Where(x => x.Usage == q).ToList().Count < 1)
+                {
+                    ViewBag.saleErrorMessage = FeedBacks.SaleCanNotFound;
+                }
                 int pageSize = 8;
                 int pageNumber = (page ?? 1);
                 var onePageOfProducts = result.Data.Where(x => x.Usage == q).ToPagedList(pageNumber, pageSize);
@@ -35,6 +40,7 @@ namespace WebUI.Controllers
             ViewBag.saleErrorMessage = result.Message;
             return View();
         }
+
 
         public IActionResult Details(int id)
         {
