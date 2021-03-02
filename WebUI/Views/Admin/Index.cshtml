@@ -36,7 +36,7 @@
     }
     <hr />
     <div class="row d-flex Sales-row justify-content-center">
-
+        
         @if (ViewBag.result.Count > 0)
         {
             @await Html.PartialAsync("_updateSaleCard", Model)
@@ -44,7 +44,7 @@
         else
         {
             <div class="alert alert-warning myAlert text-center">
-                @ViewBag.updateResult
+                @ViewBag.indexResult
             </div>
         }
 

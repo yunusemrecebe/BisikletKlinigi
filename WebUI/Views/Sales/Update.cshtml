@@ -21,30 +21,41 @@
             <div class="col-md-4">
                 <label for="Usage" class="form-label">Kullanım Durumu</label>
                 <select id="Usage" name="Usage" class="form-select">
-                    <option selected value="@Model.Usage">@Model.Usage</option>
-                    <option value="@(@Model.Usage== "Sıfır" ? "İkinci El" : "Sıfır")">@(@Model.Usage== "Sıfır" ? "İkinci El" : "Sıfır")</option>
+                    <option selected value="@Model.Usage">@(@Model.Usage == "sifir" ? "Sıfır" : "İkinci El")</option>
+                    <option value="@(@Model.Usage== "sifir" ? "ikinciel" : "sifir")">@(@Model.Usage != "sifir" ? "Sıfır" : "İkinci El")</option>
                 </select>
             </div>
             <div class="col-md-4">
                 <label for="Price" class="form-label">Fiyat</label>
-                <input type="number" step="0.01" name="Price" class="form-control" id="Price" value="@Model.Price">
+                <input type="text" name="Price" class="form-control" id="Price" value="@Model.Price">
+            </div>
+
+            <div class="col-md-8">
+                <label for="Description" class="form-label">Açıklama</label>
+                <textarea class="form-control" name="Description" id="Description" rows="4">@Model.Description</textarea>
             </div>
 
             <div class="col-md-4">
-                <label for="Genre" class="form-label">Tür</label>
-                <select id="Genre" name="Genre" class="form-select">
-                    <option selected value="@Model.Genre">@Model.Genre</option>
-                    <option value="Yol Bisikleti">Yol Bisikleti</option>
-                    <option value="Dağ Bisikleti">Dağ Bisikleti</option>
-                    <option value="Şehir Bisikleti">Şehir Bisikleti</option>
-                    <option value="Katlanır Bisiklet">Katlanır Bisiklet</option>
-                    <option value="Elektrikli Bisiklet">Elektrikli Bisiklet</option>
-                </select>
-            </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="Genre" class="form-label">Tür</label>
+                        <select id="Genre" name="Genre" class="form-select">
+                            <option selected value="@Model.Genre">@Model.Genre</option>
+                            <option value="Yol Bisikleti">Yol Bisikleti</option>
+                            <option value="Dağ Bisikleti">Dağ Bisikleti</option>
+                            <option value="Şehir Bisikleti">Şehir Bisikleti</option>
+                            <option value="Katlanır Bisiklet">Katlanır Bisiklet</option>
+                            <option value="Elektrikli Bisiklet">Elektrikli Bisiklet</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="col">
+                        <label for="Shifters" class="form-label">Vites Kolları</label>
+                        <input type="text" name="Shifters" class="form-control" value="@Model.Shifters">
+                    </div>
 
-            <div class="col-md-12">
-                <label for="Description" class="form-label">Açıklama</label>
-                <textarea class="form-control" name="Description" id="Description" rows="4">@Model.Description</textarea>
+                </div>
             </div>
 
             <div class="col-md-4">
@@ -105,18 +116,15 @@
                 <input type="text" name="Crankset" class="form-control" value="@Model.Crankset">
             </div>
 
-            <div class="col-md-4">
-                <label for="Shifters" class="form-label">Vites Kolları</label>
-                <input type="text" name="Shifters" class="form-control" value="@Model.Shifters">
-            </div>
+
 
             <div class="col-md-4">
                 <label for="Image" class="form-label">Fotoğraf</label>
                 <input class="form-control" name="Image" type="file" id="Image">
             </div>
 
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Gönder</button>
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-lg btn-primary">Gönder</button>
             </div>
 
 
