@@ -26,6 +26,7 @@ namespace Entities.Concrete
         public string FrontDerailleurs { get; set; }
         public string Crankset { get; set; }
         public string Shifters { get; set; }
+        public string Usage { get; set; }
         public string Image { get; set; }
     }
 }

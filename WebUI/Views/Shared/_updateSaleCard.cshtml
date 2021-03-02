@@ -12,8 +12,8 @@
             <p class="card-text">@sale.Description</p>
             <span class="card-money">@String.Format("{0:0,0.00}", sale.Price)  &#8378</span>
             <br /><hr />
-            <a href="/Admin/Update/@sale.Id" class="btn btn-warning">Güncelle</a>
-            <a href="/Admin/Delete/@sale.Id" class="btn btn-danger">Sil</a>
+            <a href="~/Sales/Update/@sale.Id" class="btn btn-warning">Güncelle</a>
+            <a href="~/Sales/Delete/@sale.Id" class="btn btn-danger">Sil</a>
         </div>
     </div>
 }
