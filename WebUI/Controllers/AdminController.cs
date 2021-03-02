@@ -309,14 +309,28 @@ namespace WebUI.Controllers
 
             if (Image != null)
             {
+                bool extensionIsChecked = false;
                 var extension = Path.GetExtension(Image.FileName);
-                var fileName = string.Format($"bisikletKlinigi{Guid.NewGuid()}{extension}");
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img\\uploads", fileName);
-                sale.Image = fileName;
-
-                using (var stream = new FileStream(path, FileMode.Create))
+                if (extension == ".jpg" || extension == ".png")
                 {
-                    await Image.CopyToAsync(stream);
+                    extensionIsChecked = true;
+                }
+                if (extensionIsChecked)
+                {
+                    var fileName = string.Format($"bisikletKlinigi_{Guid.NewGuid()}{extension}");
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img\\uploads", fileName);
+                    sale.Image = fileName;
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await Image.CopyToAsync(stream);
+                    }
+                }
+                else
+                {
+                    ViewBag.updateResult = null;
+                    ViewBag.updateMessage = "Yalnızca 'JPG' veya 'PNG' formatındaki görseller yüklenebilir!";
+                    return View();
                 }
             }
 
@@ -324,7 +338,7 @@ namespace WebUI.Controllers
             var result = _saleService.Add(sale);
             if (result.Success)
             {
-                ViewBag.createSuccess = result.Message;
+                TempData["createSuccess"]= result.Message;
                 return RedirectToAction("Index");
             }
             ViewBag.createSuccess = result.Message;
@@ -402,7 +416,7 @@ namespace WebUI.Controllers
             var result = _saleService.Update(sale);
             if (result.Success)
             {
-                ViewBag.updateResult = result.Message;
+                TempData["updateSuccess"] = result.Message;
                 return RedirectToAction("Index");
             }
 
@@ -425,7 +439,7 @@ namespace WebUI.Controllers
             if (result.Success)
             {
                 System.IO.File.Delete(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img\\uploads", sale.Data.Image));
-                ViewBag.deleteResult = result.Message;
+                TempData["deleteResult"] = result.Message;
                 return RedirectToAction("Index");
             }
 

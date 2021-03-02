@@ -6,9 +6,11 @@
     ViewBag.Title = "Yönetim Paneli - İlan Oluşturma";
 }
 
-@if (ViewBag.createSuccess != null)
+@if(@ViewBag.updateMessage != null)
 {
-    <h1>@ViewBag.createSuccess</h1>
+<div class="alert alert-warning myAlert">
+    @ViewBag.updateMessage
+</div>
 }
 <div class="container">
 
