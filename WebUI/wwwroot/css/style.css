@@ -145,49 +145,52 @@ footer a:hover {
     }
 
  /*   slider bitti*/
+@media only screen and (max-width: 1400px) {
 
-
-@media only screen and (max-width: 768px) {
-    .Mobile-order1 {
-        order: -1;
+    .Admin-navbar .navbar-collapse a {
+        display: block;
+        margin-top: 15px;
     }
 
-    .Admin-navbar .navbar-collapse a{
-        display:block;
-        margin-top:15px;
-    }
-
-    .Sales-card .card-money {
-        float:right;
-    }
-
-    .Sales-card .card-text {
-        height: 4.2rem;
-        overflow: hidden;
-    }
-
-    .slider-text {
-        display: none !important;
-    }
-
-    .Sales-row{
-        justify-content:center;
-    }
-
-    .Sales-card{
-        width:12rem !important;
-    }
-
-
-    .Home-cards {
-        font-size: var(--mobile-home-font-size);
-    }
-
-        .Home-cards p {
-            margin-top: 20px;
-        }
-
-        .Home-cards img {
-            width: 200px;
-        }
 }
+
+    @media only screen and (max-width: 768px) {
+        .Mobile-order1 {
+            order: -1;
+        }
+
+
+        .Sales-card .card-money {
+            float: right;
+        }
+
+        .Sales-card .card-text {
+            height: 4.2rem;
+            overflow: hidden;
+        }
+
+        .slider-text {
+            display: none !important;
+        }
+
+        .Sales-row {
+            justify-content: center;
+        }
+
+        .Sales-card {
+            width: 12rem !important;
+        }
+
+
+        .Home-cards {
+            font-size: var(--mobile-home-font-size);
+        }
+
+            .Home-cards p {
+                margin-top: 20px;
+            }
+
+            .Home-cards img {
+                width: 200px;
+            }
+    }

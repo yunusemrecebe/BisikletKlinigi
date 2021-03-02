@@ -14,12 +14,35 @@
 }
 else
 {
-    foreach (var message in Model)
+
+    <div class="container mt-4">
+    <h2 class="m-2">Mesajlar</h2>
+    @foreach (var message in Model)
     {
-        <p>@message.FirstName</p>
-        <p>@message.LastName</p>
-        <p>@message.Email</p>
-        <p>@message.Message</p>
+        <div class="col-md" style="max-width:700px">
+            <div class="row m-2">
+                <div class="col border border-3  rounded">
+                    <span>@message.FirstName</span>
+                </div>
+                <div class="col border border-3  rounded">
+                    <span>@message.LastName</span>
+                </div>
+            </div>
+            <div class="row border border-3 m-2 rounded">
+                <span>@message.Email</span>
+            </div>
+            <div class="row border border-3 m-2 rounded">
+                <p>@message.Message</p>
+            </div>
+            <div class="row m-2">
+                <a class="btn btn-secondary" href="mailto:@message.Email"><i class="bi bi-envelope-fill"></i> Kullanıcıya Mail Gönder</a>
+            </div>
+        </div>
+        <hr />
+ 
     }
-    
+
+
+    </div>
+   
 }
