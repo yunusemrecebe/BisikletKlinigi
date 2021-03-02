@@ -5,10 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
-using DataAccess.Abstract;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using WebUI.Models;
+using X.PagedList;
 
 namespace WebUI.Controllers
 {
@@ -21,11 +18,15 @@ namespace WebUI.Controllers
             _saleService = saleService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
             var result = _saleService.GetAll();
             ViewBag.result = result.Data;
-            return View(result.Data);
+            int pageSize = 1;
+            int pageNumber = (page ?? 1);
+            var onePageOfProducts = result.Data.ToPagedList(pageNumber, pageSize);
+            ViewBag.OnePageOfProducts = onePageOfProducts;
+            return View();
         }
 
         public IActionResult Details(int id)

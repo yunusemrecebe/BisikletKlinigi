@@ -1,4 +1,13 @@
-﻿@model List<Entities.Concrete.Sale>
+﻿@model X.PagedList.IPagedList<Entities.Concrete.Sale>
+
+@using X.PagedList.Mvc.Core; 
+@using X.PagedList;
+
+@section pagination
+{
+    <link href="/css/PagedList.css" rel="stylesheet" type="text/css" />
+}
+
 @{
     ViewBag.Title = "Satılık Bisikletler - Bisiklet Kliniği";
 }
@@ -8,43 +17,21 @@
 
     <div class="container Sales position-relative">
         <div class="row d-flex Sales-row">
-
-            @if (Model.Count > 0)
-            {
-                @await Html.PartialAsync("_saleCard", Model)
-            }
-            else
-            {
-                <div class="alert alert-warning myAlert">
-                    Satılık bisiklet ilanı bulunamadı!
-                </div>
-            }
-
+            @if (ViewBag.result.Count > 0)
+        {
+            @await Html.PartialAsync("_saleCard", Model)
+        }
+        else
+        {
+            <div class="alert alert-warning myAlert">
+                Satılık bisiklet ilanı bulunamadı!
+            </div>
+        }
+            @Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))
         </div>
-
-        <div class="row">
-            <nav aria-label="Page navigation" class="d-flex justify-content-center">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Önceki">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Sonraki">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
     </div>
-
 </div>
+
 
 
 
