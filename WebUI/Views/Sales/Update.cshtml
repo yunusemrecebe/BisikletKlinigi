@@ -18,7 +18,13 @@
                 <label for="Topic" class="form-label">Başlık</label>
                 <input type="text" name="Topic" class="form-control" id="Topic" value="@Model.Topic">
             </div>
-
+            <div class="col-md-4">
+                <label for="Usage" class="form-label">Kullanım Durumu</label>
+                <select id="Usage" name="Usage" class="form-select">
+                    <option selected value="Sıfır">Sıfır</option>
+                    <option value="İkinci El">İkinci El</option>
+                </select>
+            </div>
             <div class="col-md-4">
                 <label for="Price" class="form-label">Fiyat</label>
                 <input type="number" step="0.01" name="Price" class="form-control" id="Price" value="@Model.Price">
@@ -90,7 +96,7 @@
 
             <div class="col-md-4">
                 <label for="FrontDerailleurs" class="form-label">Ön Aktarıcı</label>
-                <input type="text" name="FrontDerailleurs" class="form-control" value="@Model.FrontDerailleurs"> 
+                <input type="text" name="FrontDerailleurs" class="form-control" value="@Model.FrontDerailleurs">
             </div>
 
             <div class="col-md-4">
@@ -104,7 +110,7 @@
             </div>
 
             <div class="col-md-4">
-                <label for="Image" class="form-label">Fotoğraflar</label>
+                <label for="Image" class="form-label">Fotoğraf</label>
                 <input class="form-control" name="Image" type="file" id="Image">
             </div>
 
@@ -112,7 +118,7 @@
                 <button type="submit" class="btn btn-primary">Gönder</button>
             </div>
 
-            
+
         </form>
 
     </div>
