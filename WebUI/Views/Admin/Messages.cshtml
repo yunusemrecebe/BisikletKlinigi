@@ -8,6 +8,11 @@
     ViewBag.Title = "Yönetim Paneli - Mesajlar";
 }
 
+@if (TempData["messagesError"] != null)
+{
+    <h1 class="text-center" style="color: red;">@TempData["messagesError"]</h1>
+}
+
 @if (ViewBag.messageStatus = false)
 {
     <h1 class="text-center">@ViewBag.messagesError</h1>
@@ -24,7 +29,7 @@ else
             @foreach (var message in Model.OrderByDescending(x => x.Id))
             {
                 <center>
-                    <div class="col-md mb-3" style="text-align: left; max-width: 700px">
+                    <div class="col-md mb-4" style="text-align: left; max-width: 700px;">
                         <div class="row m-2">
                             <div class="col border border-3  rounded">
                                 <span>@message.FirstName</span>
@@ -39,15 +44,16 @@ else
                         <div class="row border border-3 m-2 rounded">
                             <p>@message.Message</p>
                         </div>
-                        <div class="row m-2">
-                            <a class="btn btn-secondary" href="mailto:@message.Email"><i class="bi bi-envelope-fill"></i> Kullanıcıya Mail Gönder</a>
+                        <div class="row m-2 text-center">
+                            <div class="col-md-6"><a class="btn btn-success" href="mailto:@message.Email"><i class="bi bi-envelope-fill"></i> Kullanıcıya Mail Gönder</a></div>
+                            <div class="col-md-6"><a class="btn btn-danger" href="/admin/DeleteMessage/@message.Id"><i class="bi bi-envelope-fill"></i> Mesajı Sil</a></div>
                         </div>
                     </div>
-                    <hr style="max-width: 700px;"/>
+                    <hr class="mb-4" style="max-width: 700px;"/>
                 </center>
             }
         </div>
-        <div class="col-md-2 mb-3"></div>
+        <div class="col-md-2"></div>
     </div>
     
 </div>

@@ -54,6 +54,12 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult Messages()
         {
+            if (HttpContext.Session.GetString("isUserLogin") != "true" || HttpContext.Session.GetInt32("userRole") == 1)
+            {
+                TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
+                return RedirectToAction("Login");
+            }
+
             var result = _contactUsService.GetAll();
             if (result.Success)
             {
@@ -64,6 +70,28 @@ namespace WebUI.Controllers
             ViewBag.messageStatus = result.Success;
             ViewBag.messagesError = result.Message;
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult DeleteMessage(int id)
+        {
+            if (HttpContext.Session.GetString("isUserLogin") != "true" || HttpContext.Session.GetInt32("userRole") == 1)
+            {
+                TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
+                return RedirectToAction("Login");
+            }
+
+            var message = _contactUsService.GetById(id);
+
+            var result = _contactUsService.Delete(message.Data);
+            if (result.Success)
+            {
+                TempData["messagesError"] = result.Message;
+                return RedirectToAction("Messages");
+            }
+
+            TempData["messagesError"] = result.Message;
+            return RedirectToAction("Messages");
         }
 
         [HttpGet]
@@ -151,6 +179,12 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult UserManagement(User user)
         {
+            if (HttpContext.Session.GetString("isUserLogin") != "true" || HttpContext.Session.GetInt32("userRole") == 1)
+            {
+                TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
+                return RedirectToAction("Login");
+            }
+
             var result = _userService.Update(user);
             if (result.Success)
             {
@@ -188,6 +222,12 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult UserActivate(int id)
         {
+            if (HttpContext.Session.GetString("isUserLogin") != "true" || HttpContext.Session.GetInt32("userRole") == 1)
+            {
+                TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
+                return RedirectToAction("Login");
+            }
+
             var user = _userService.GetById(id);
             user.Data.Role = 2;
             var result = _userService.Update(user.Data);
@@ -204,6 +244,12 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult UserPassive(int id)
         {
+            if (HttpContext.Session.GetString("isUserLogin") != "true" || HttpContext.Session.GetInt32("userRole") == 1)
+            {
+                TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
+                return RedirectToAction("Login");
+            }
+
             var user = _userService.GetById(id);
             user.Data.Role = 1;
             var result = _userService.Update(user.Data);
@@ -220,6 +266,13 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult UserDelete(int id)
         {
+
+            if (HttpContext.Session.GetString("isUserLogin") != "true" || HttpContext.Session.GetInt32("userRole") == 1)
+            {
+                TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
+                return RedirectToAction("Login");
+            }
+
             var user = _userService.GetById(id);
 
             var result = _userService.Delete(user.Data);
@@ -248,6 +301,12 @@ namespace WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Sale sale, IFormFile Image)
         {
+            if (HttpContext.Session.GetString("isUserLogin") != "true" || HttpContext.Session.GetInt32("userRole") == 1)
+            {
+                TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
+                return RedirectToAction("Login");
+            }
+
             if (Image != null)
             {
                 var extension = Path.GetExtension(Image.FileName);
@@ -300,6 +359,12 @@ namespace WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(Sale sale, IFormFile? Image)
         {
+            if (HttpContext.Session.GetString("isUserLogin") != "true" || HttpContext.Session.GetInt32("userRole") == 1)
+            {
+                TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
+                return RedirectToAction("Login");
+            }
+
             if (Image != null)
             {
                 bool extensionIsChecked = false;
