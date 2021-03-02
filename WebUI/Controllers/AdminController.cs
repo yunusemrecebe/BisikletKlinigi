@@ -1,15 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
-using Business.Constants;
-using DataAccess.Abstract;
-using DataAccess.Concrete.EntityFramework;
 using WebUI.Models;
 using Microsoft.AspNetCore.Http;
+using X.PagedList;
 using FeedBacks = Business.Constants.Messages;
 
 namespace WebUI.Controllers
@@ -27,7 +23,7 @@ namespace WebUI.Controllers
             _contactUsService = contactUsService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
             if (HttpContext.Session.GetString("isUserLogin") == null)
             {
@@ -39,8 +35,12 @@ namespace WebUI.Controllers
                 var result = _saleService.GetAll();
                 if (result.Success)
                 {
-                    ViewBag.indexResult = result.Message;
-                    return View(result.Data);
+                    ViewBag.result = result.Data;
+                    int pageSize = 8;
+                    int pageNumber = (page ?? 1);
+                    var onePageOfProducts = result.Data.ToPagedList(pageNumber, pageSize);
+                    ViewBag.OnePageOfProducts = onePageOfProducts;
+                    return View();
                 }
 
                 ViewBag.indexResult = result.Message;

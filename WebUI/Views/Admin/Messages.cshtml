@@ -15,34 +15,43 @@
 else
 {
 
-    <div class="container mt-4">
-    <h2 class="m-2">Mesajlar</h2>
-    @foreach (var message in Model)
-    {
-        <div class="col-md" style="max-width:700px">
-            <div class="row m-2">
-                <div class="col border border-3  rounded">
-                    <span>@message.FirstName</span>
-                </div>
-                <div class="col border border-3  rounded">
-                    <span>@message.LastName</span>
-                </div>
-            </div>
-            <div class="row border border-3 m-2 rounded">
-                <span>@message.Email</span>
-            </div>
-            <div class="row border border-3 m-2 rounded">
-                <p>@message.Message</p>
-            </div>
-            <div class="row m-2">
-                <a class="btn btn-secondary" href="mailto:@message.Email"><i class="bi bi-envelope-fill"></i> Kullanıcıya Mail Gönder</a>
-            </div>
+<div class="container mt-4">
+    <h2 class="m-2 text-center">Mesajlar</h2>
+    
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            @foreach (var message in Model)
+            {
+            <center>
+                <div class="col-md mb-3" style="text-align: left;max-width: 700px">
+                    <div class="row m-2">
+                        <div class="col border border-3  rounded">
+                            <span>@message.FirstName</span>
+                        </div>
+                        <div class="col border border-3  rounded">
+                            <span>@message.LastName</span>
+                        </div>
+                    </div>
+                    <div class="row border border-3 m-2 rounded">
+                        <span>@message.Email</span>
+                    </div>
+                    <div class="row border border-3 m-2 rounded">
+                        <p>@message.Message</p>
+                    </div>
+                    <div class="row m-2">
+                        <a class="btn btn-secondary" href="mailto:@message.Email"><i class="bi bi-envelope-fill"></i> Kullanıcıya Mail Gönder</a>
+                    </div>
+                </div> 
+                <hr style="max-width: 700px;" />
+            </center>
+               
+
+            }
         </div>
-        <hr />
- 
-    }
-
-
+        <div class="col-md-2 mb-3"></div>
     </div>
+    
+</div>
    
 }

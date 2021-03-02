@@ -15,7 +15,7 @@ namespace BisikletKlinigi.DataAccess.Concrete
             string local = @"Server=DESKTOP-63SM79K;Database=BisikletKlinigi;Trusted_Connection=true";
             string server = @"Server=MSSQLSERVER2019;Database=BisikletKlinigi;User=BKAdmin;Password=K!3mq5t7";
 
-            optionsBuilder.UseSqlServer(localEmirhan);
+            optionsBuilder.UseSqlServer(local);
         }
 
         public DbSet<User> Users { get; set; }

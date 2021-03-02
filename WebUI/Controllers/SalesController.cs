@@ -21,11 +21,17 @@ namespace WebUI.Controllers
         public IActionResult Index(int? page)
         {
             var result = _saleService.GetAll();
-            ViewBag.result = result.Data;
-            int pageSize = 1;
-            int pageNumber = (page ?? 1);
-            var onePageOfProducts = result.Data.ToPagedList(pageNumber, pageSize);
-            ViewBag.OnePageOfProducts = onePageOfProducts;
+            if (result.Success)
+            {
+                ViewBag.result = result.Data;
+                int pageSize = 8;
+                int pageNumber = (page ?? 1);
+                var onePageOfProducts = result.Data.ToPagedList(pageNumber, pageSize);
+                ViewBag.OnePageOfProducts = onePageOfProducts;
+                return View();
+            }
+
+            ViewBag.saleErrorMessage = result.Message;
             return View();
         }
 
