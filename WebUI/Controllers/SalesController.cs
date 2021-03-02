@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
 using WebUI.Models;
@@ -18,7 +19,7 @@ namespace WebUI.Controllers
             _saleService = saleService;
         }
 
-        public IActionResult Index(int? page)
+        public IActionResult Index(int? page, string q)
         {
             var result = _saleService.GetAll();
             if (result.Success)
@@ -26,7 +27,7 @@ namespace WebUI.Controllers
                 ViewBag.result = result.Data;
                 int pageSize = 8;
                 int pageNumber = (page ?? 1);
-                var onePageOfProducts = result.Data.ToPagedList(pageNumber, pageSize);
+                var onePageOfProducts = result.Data.Where(x => x.Usage == q).ToPagedList(pageNumber, pageSize);
                 ViewBag.OnePageOfProducts = onePageOfProducts;
                 return View();
             }
