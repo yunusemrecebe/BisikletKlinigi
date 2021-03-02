@@ -21,8 +21,8 @@
             <div class="col-md-4">
                 <label for="Usage" class="form-label">Kullanım Durumu</label>
                 <select id="Usage" name="Usage" class="form-select">
-                    <option selected value="Sıfır">Sıfır</option>
-                    <option value="İkinci El">İkinci El</option>
+                    <option selected value="@Model.Usage">@Model.Usage</option>
+                    <option value="@(@Model.Usage== "Sıfır" ? "İkinci El" : "Sıfır")">@(@Model.Usage== "Sıfır" ? "İkinci El" : "Sıfır")</option>
                 </select>
             </div>
             <div class="col-md-4">
@@ -33,7 +33,8 @@
             <div class="col-md-4">
                 <label for="Genre" class="form-label">Tür</label>
                 <select id="Genre" name="Genre" class="form-select">
-                    <option selected value="Yol Bisikleti">Yol Bisikleti</option>
+                    <option selected value="@Model.Genre">@Model.Genre</option>
+                    <option value="Yol Bisikleti">Yol Bisikleti</option>
                     <option value="Dağ Bisikleti">Dağ Bisikleti</option>
                     <option value="Şehir Bisikleti">Şehir Bisikleti</option>
                     <option value="Katlanır Bisiklet">Katlanır Bisiklet</option>
