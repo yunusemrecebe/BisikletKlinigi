@@ -14,24 +14,25 @@
 <div class="container mt-4">
 
     <div class="container Sales position-relative mt-5">
-        <div class="row d-flex Sales-row">
+        <div class="row d-flex Sales-row justify-content-center">
             @if (ViewBag.result.Count > 0)
             {
                 @await Html.PartialAsync("_saleCard", Model)
             }
             else
             {
-                <div class="alert alert-warning myAlert">
+                <div class="alert alert-warning myAlert text-center">
                     @ViewBag.saleErrorMessage
                 </div>
             }
 
-            <div class="row"></div>
-            <div class="col-md-5"></div>
-            <div class="col-md-2 mt-4">@Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))</div>
-            <div class="col-md-5"></div>
-            
+
         </div>
+
+        <div class="row">
+            <div class="text-center d-flex justify-content-center">@Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))</div>
+        </div>
+
     </div>
 </div>
 
