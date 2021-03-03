@@ -34,6 +34,8 @@ namespace WebUI
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStatusCodePagesWithRedirects("/Error/NotFound");
+
             app.UseStaticFiles(); // wwwroot
 
             app.UseRouting();
