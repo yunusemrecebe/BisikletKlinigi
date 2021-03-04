@@ -98,17 +98,19 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(User user)
+        public IActionResult Register(Entities.Concrete.User user)
         {
-            user.Role = 1;
-            var result = _userService.Add(user);
-            if (result.Success)
+            if (ModelState.IsValid)
             {
-                ViewBag.registerResult = result.Message;
-                return RedirectToAction("Login");
+                var result = _userService.Add(user);
+                if (result.Success)
+                {
+                    ViewBag.registerResult = result.Message;
+                    return RedirectToAction("Login");
+                }
             }
-
-            ViewBag.registerResult = result.Message;
+            
+            ViewBag.registerResult = "kayıt olamadın anam";
             return View();
         }
 

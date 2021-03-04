@@ -2,7 +2,7 @@
     Layout = "_noLayout";
 }
 
-@model User
+@model Entities.Concrete.User
 
 @{
     ViewBag.Title = "Yönetim Paneli - Kayıt Ol";
@@ -15,32 +15,45 @@
 
 <div class="container Register bg-light" style="max-width:500px !important; height:600px !important; margin-top:10em; opacity:80%;">
     <h1>Kayıt ol</h1>
-    <form method="post" action="/Admin/Register/" class="Portal-kayit-form">
+    <form method="post" asp-controller="Admin" asp-action="Register" class="Portal-kayit-form">
         <div class="row">
+
+            <input type="hidden" asp-for="Role" value="1"/>
+
             <div class="col">
                 <div class="mb-3">
-                    <label for="InputName" class="form-label">Adınız</label>
-                    <input type="text" class="form-control" name="Name" />
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control"/>
+                    <span asp-validation-for="Name"></span>
                 </div>
             </div>
+
             <div class="col">
                 <div class="mb-3">
-                    <label for="InputLastName" class="form-label">Soyadınız</label>
-                    <input type="text" class="form-control" name="LastName" />
+                    <label asp-for="LastName" class="form-label"></label>
+                    <input asp-for="LastName" class="form-control"/>
+                    <span asp-validation-for="LastName"></span>
                 </div>
             </div>
+
         </div>
+
         <div class="mb-3">
-            <label for="InputEmail" class="form-label">Email adresi</label>
-            <input type="email" class="form-control" name="Email" aria-describedby="emailHelp" />
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control"  />
+            <span asp-validation-for="Email"></span>
         </div>
+
         <div class="mb-3">
-            <label for="InputPassword" class="form-label">Şifreniz</label>
-            <input type="password" class="form-control" name="Password" />
+            <label asp-for="Password" class="form-label"></label>
+            <input asp-for="Password" class="form-control"/>
+            <span asp-validation-for="Password"></span>
         </div>
+
         <div class="mb-3">
-            <label for="InputMobile" class="form-label">Telefon</label>
-            <input type="tel" class="form-control" name="Phone" aria-describedby="mobileNumber" />
+            <label asp-for="Phone" class="form-label"></label>
+            <input asp-for="Phone" class="form-control"/>
+            <span asp-validation-for="Phone"></span>
         </div>
 
         <div class="mb-3 text-center">
