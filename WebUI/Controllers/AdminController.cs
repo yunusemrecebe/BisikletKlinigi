@@ -58,9 +58,10 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(string mail, string password)
+        public IActionResult Login(string Email, string Password)
         {
-            var result = _userService.Login(mail, password);
+        
+            var result = _userService.Login(Email, Password);
             if (result.Success)
             {
                 //Save the user login status to true
@@ -76,7 +77,7 @@ namespace WebUI.Controllers
             }
 
             //if User can not login
-            ViewBag.loginResult = result.Message;
+            TempData["userIsNotLogin"] = FeedBacks.LoginIsNotSucces;
             return View();
         }
 
@@ -109,8 +110,7 @@ namespace WebUI.Controllers
                     return RedirectToAction("Login");
                 }
             }
-            
-            ViewBag.registerResult = "kayıt olamadın anam";
+
             return View();
         }
 
@@ -136,7 +136,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult UserManagement(User user)
+        public IActionResult UserManagement(Entities.Concrete.User user)
         {
             if (HttpContext.Session.GetString("isUserLogin") != "true" || HttpContext.Session.GetInt32("userRole") == 1)
             {
@@ -144,15 +144,19 @@ namespace WebUI.Controllers
                 return RedirectToAction("Login");
             }
 
-            var result = _userService.Update(user);
-            if (result.Success)
+            if (ModelState.IsValid)
             {
-                //ViewBag.userManagementResult = result.Success;
-                //ViewBag.userManagementMessage = result.Message;
-                return RedirectToAction("UserManagement", user.Id);
+                var result = _userService.Update(user);
+                if (result.Success)
+                {
+                    //ViewBag.userManagementResult = result.Success;
+                    //ViewBag.userManagementMessage = result.Message;
+                    return RedirectToAction("UserManagement", user.Id);
+                }
             }
+
             ViewBag.userManagementResult = true;
-            ViewBag.userManagementMessage = result.Message;
+            ViewBag.userManagementMessage = FeedBacks.UserCanNotUpdated;
             return View();
         }
 

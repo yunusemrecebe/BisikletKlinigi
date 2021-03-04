@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Business.Abstract;
 using Microsoft.AspNetCore.Http;
 using WebUI.Models;
+using FeedBacks = Business.Constants.Messages;
 
 namespace WebUI.Controllers
 {
@@ -24,17 +25,21 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult SendMessage(ContactUs contactUs)
+        public IActionResult Index(Entities.Concrete.ContactUs contactUs)
         {
-            var result = _contactUsService.Add(contactUs);
-
-            if (result.Success)
+            if (ModelState.IsValid)
             {
-                TempData["ContactSendMessageResult"] = result.Message;
-                return RedirectToAction("Index");
+                var result = _contactUsService.Add(contactUs);
+
+                if (result.Success)
+                {
+                    TempData["ContactSendMessageResult"] = result.Message;
+                    return View();
+                }
             }
-            TempData["ContactSendMessageResult"] = result.Message;
-            return RedirectToAction("Index");
+            
+            TempData["ContactSendMessageResult"] = FeedBacks.MessagesCanNotAdded;
+            return View(contactUs);
         }
 
         [HttpGet]
