@@ -81,7 +81,7 @@ namespace WebUI.Controllers
             {
                 bool extensionIsChecked = false;
                 var extension = Path.GetExtension(Image.FileName);
-                if (extension == ".jpg" || extension == ".png")
+                if (extension == ".jpg" || extension == ".png" || extension == ".jpeg" || extension == ".jfif")
                 {
                     extensionIsChecked = true;
                 }
@@ -99,8 +99,8 @@ namespace WebUI.Controllers
                 else
                 {
                     ViewBag.updateResult = null;
-                    ViewBag.updateMessage = "Yalnızca 'JPG' veya 'PNG' formatındaki görseller yüklenebilir!";
-                    return View();
+                    ViewBag.updateMessage = "Yalnızca 'JPG' - 'JPEG' - 'PNG' - 'JFIF' formatındaki görseller yüklenebilir!";
+                    return View(sale);
                 }
             }
 
@@ -153,7 +153,7 @@ namespace WebUI.Controllers
             {
                 bool extensionIsChecked = false;
                 var extension = Path.GetExtension(Image.FileName);
-                if (extension == ".jpg" || extension == ".png")
+                if (extension == ".jpg" || extension == ".png" || extension == ".jpeg" || extension == ".jfif")
                 {
                     extensionIsChecked = true;
                 }
@@ -172,7 +172,7 @@ namespace WebUI.Controllers
                 else
                 {
                     ViewBag.updateResult = null;
-                    ViewBag.updateMessage = "Yalnızca 'JPG' veya 'PNG' formatındaki görseller yüklenebilir!";
+                    ViewBag.updateMessage = "Yalnızca 'JPG' - 'JPEG' - 'PNG' - 'JFIF' formatındaki görseller yüklenebilir!";
                     return View();
                 }
 
