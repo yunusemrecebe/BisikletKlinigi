@@ -20,25 +20,29 @@
 
         <div class="col-md-4">
             <label asp-for="Topic" class="form-label"></label>
-            <input asp-for="Topic" class="form-control" id="Topic">
+            <input asp-for="Topic" class="form-control">
+            <span asp-validation-for="Topic"></span>
         </div>
 
         <div class="col-md-4">
             <label asp-for="Usage" class="form-label"></label>
-            <select asp-for="Usage" id="Usage" class="form-select">
+            <select asp-for="Usage" class="form-select">
                 <option selected value="sifir">Sıfır</option>
                 <option value="ikinciel">İkinci El</option>
             </select>
+            <span asp-validation-for="Usage"></span>
         </div>
 
         <div class="col-md-4">
             <label asp-for="Price" class="form-label"></label>
-            <input asp-for="Price" pattern="^\d*(\.\d{0,2})?$" class="form-control" id="Price">
+            <input asp-for="Price" pattern="^\d*(\.\d{0,2})?$" class="form-control">
+            <span asp-validation-for="Price"></span>
         </div>
 
         <div class="col-md-8">
             <label asp-for="Description" class="form-label"></label>
             <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="Description"></span>
         </div>
 
         <div class="col-md-4">
@@ -46,13 +50,14 @@
             <div class="row">
                 <div class="col">
                     <label asp-for="Genre" class="form-label"></label>
-                    <select asp-for="Genre" id="Genre" class="form-select">
+                    <select asp-for="Genre" class="form-select">
                         <option selected value="Yol Bisikleti">Yol Bisikleti</option>
                         <option value="Dağ Bisikleti">Dağ Bisikleti</option>
                         <option value="Şehir Bisikleti">Şehir Bisikleti</option>
                         <option value="Katlanır Bisiklet">Katlanır Bisiklet</option>
                         <option value="Elektrikli Bisiklet">Elektrikli Bisiklet</option>
                     </select>
+                    <span asp-validation-for="Genre"></span>
                 </div>
             </div>
 
@@ -60,6 +65,7 @@
                 <div class="col">
                     <label asp-for="Shifters" class="form-label"></label>
                     <input asp-for="Shifters" class="form-control">
+                    <span asp-validation-for="Shifters"></span>
                 </div>
             </div>
 
@@ -68,36 +74,43 @@
         <div class="col-md-4">
             <label asp-for="Brand" class="form-label"></label>
             <input asp-for="Brand" class="form-control">
+            <span asp-validation-for="Brand"></span>
         </div>
 
         <div class="col-md-4">
             <label asp-for="Model" class="form-label"></label>
             <input asp-for="Model" class="form-control">
+            <span asp-validation-for="Model"></span>
         </div>
 
         <div class="col-md-4">
             <label asp-for="FrameSize" class="form-label"></label>
             <input asp-for="FrameSize" class="form-control">
+            <span asp-validation-for="FrameSize"></span>
         </div>
 
         <div class="col-md-4">
             <label asp-for="WheelSize" class="form-label"></label>
             <input asp-for="WheelSize" class="form-control">
+            <span asp-validation-for="WheelSize"></span>
         </div>
 
         <div class="col-md-4">
             <label asp-for="BrakeSystem" class="form-label"></label>
             <input asp-for="BrakeSystem" class="form-control">
+            <span asp-validation-for="BrakeSystem"></span>
         </div>
 
         <div class="col-md-4">
             <label asp-for="ForkType" class="form-label"></label>
             <input asp-for="ForkType" class="form-control">
+            <span asp-validation-for="ForkType"></span>
         </div>
 
         <div class="col-md-4">
             <label asp-for="Speed" class="form-label"></label>
             <input asp-for="Speed" class="form-control">
+            <span asp-validation-for="Speed"></span>
         </div>
 
         <div class="col-md-4">
@@ -106,26 +119,31 @@
                 <option selected value="Devam Ediyor">Devam Ediyor</option>
                 <option value="Devam Etmiyor">Devam Etmiyor</option>
             </select>
+            <span asp-validation-for="Warranty"></span>
         </div>
 
         <div class="col-md-4">
             <label asp-for="RearDerailleur" class="form-label"></label>
             <input asp-for="RearDerailleur" class="form-control">
+            <span asp-validation-for="RearDerailleur"></span>
         </div>
 
         <div class="col-md-4">
             <label asp-for="FrontDerailleurs" class="form-label"></label>
             <input asp-for="FrontDerailleurs" class="form-control">
+            <span asp-validation-for="FrontDerailleurs"></span>
         </div>
 
         <div class="col-md-4">
             <label asp-for="Crankset" class="form-label"></label>
             <input asp-for="Crankset" class="form-control">
+            <span asp-validation-for="Crankset"></span>
         </div>
 
         <div class="col-md-4">
             <label asp-for="Image" class="form-label"></label>
-            <input asp-for="Image" class="form-control" id="Image">
+            <input asp-for="Image" class="form-control">
+            <span asp-validation-for="Image"></span>
         </div>
 
         <div class="col-12 text-center">
