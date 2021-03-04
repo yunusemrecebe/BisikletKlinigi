@@ -86,9 +86,10 @@ footer a:hover {
     height: 100% !important;
 }
 
-.Sales-card .card-text{
-    height:6rem;
-    overflow:hidden;
+.Sales-card .card-text {
+    height: 6rem;
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 
 .Sales-card .btn-danger{
