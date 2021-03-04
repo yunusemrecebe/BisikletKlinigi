@@ -8,7 +8,7 @@ namespace WebUI.Controllers
 {
     public class ErrorController : Controller
     {
-        public IActionResult NotFound()
+        public IActionResult Index()
         {
             return View();
         }
