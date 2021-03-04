@@ -7,39 +7,45 @@
     ViewBag.Title = "Yönetim Paneli - İlan Güncelle";
 }
 
-
 @if (ViewBag.updateResult != null)
 {
 
     <div class="container">
 
-        <form class="row mt-4 g-3 pb-5" method="post" asp-controller="Sales" asp-action="Create" enctype="multipart/form-data">
+        <form class="row mt-4 g-3 pb-5" method="post" asp-controller="Sales" asp-action="Update" enctype="multipart/form-data">
+
             <div class="col-md-4">
-                <label for="Topic" class="form-label">Başlık</label>
-                <input type="text" name="Topic" class="form-control" id="Topic" value="@Model.Topic">
+                <label asp-for="Topic" class="form-label"></label>
+                <input asp-for="Topic" class="form-control" value="@Model.Topic">
+                <span asp-validation-for="Topic"></span>
             </div>
+
             <div class="col-md-4">
-                <label for="Usage" class="form-label">Kullanım Durumu</label>
-                <select id="Usage" name="Usage" class="form-select">
+                <label asp-for="Usage" class="form-label"></label>
+                <select asp-for="Usage" class="form-select">
                     <option selected value="@Model.Usage">@(@Model.Usage == "sifir" ? "Sıfır" : "İkinci El")</option>
                     <option value="@(@Model.Usage== "sifir" ? "ikinciel" : "sifir")">@(@Model.Usage != "sifir" ? "Sıfır" : "İkinci El")</option>
                 </select>
+                <span asp-validation-for="Usage"></span>
             </div>
+
             <div class="col-md-4">
-                <label for="Price" class="form-label">Fiyat</label>
-                <input type="text" name="Price" class="form-control" id="Price" value="@Model.Price">
+                <label asp-for="Price" class="form-label"></label>
+                <input asp-for="Price" class="form-control" value="@Model.Price">
+                <span asp-validation-for="Price"></span>
             </div>
 
             <div class="col-md-8">
-                <label for="Description" class="form-label">Açıklama</label>
-                <textarea class="form-control" name="Description" id="Description" rows="4">@Model.Description</textarea>
+                <label asp-for="Description" class="form-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="4">@Model.Description</textarea>
+                <span asp-validation-for="Description"></span>
             </div>
 
             <div class="col-md-4">
                 <div class="row">
                     <div class="col">
-                        <label for="Genre" class="form-label">Tür</label>
-                        <select id="Genre" name="Genre" class="form-select">
+                        <label asp-for="Genre" class="form-label"></label>
+                        <select asp-for="Genre" class="form-select">
                             <option selected value="@Model.Genre">@Model.Genre</option>
                             <option value="Yol Bisikleti">Yol Bisikleti</option>
                             <option value="Dağ Bisikleti">Dağ Bisikleti</option>
@@ -47,78 +53,91 @@
                             <option value="Katlanır Bisiklet">Katlanır Bisiklet</option>
                             <option value="Elektrikli Bisiklet">Elektrikli Bisiklet</option>
                         </select>
+                        <span asp-validation-for="Genre"></span>
                     </div>
                 </div>
                 <div class="row pt-2">
                     <div class="col">
-                        <label for="Shifters" class="form-label">Vites Kolları</label>
-                        <input type="text" name="Shifters" class="form-control" value="@Model.Shifters">
+                        <label asp-for="Shifters" class="form-label"></label>
+                        <input asp-for="Shifters" class="form-control" value="@Model.Shifters">
+                        <span asp-validation-for="Shifters"></span>
                     </div>
-
                 </div>
             </div>
 
             <div class="col-md-4">
-                <label for="Brand" class="form-label">Marka</label>
-                <input type="text" name="Brand" class="form-control" value="@Model.Brand">
+                <label asp-for="Brand" class="form-label"></label>
+                <input asp-for="Brand" class="form-control" value="@Model.Brand">
+                <span asp-validation-for="Brand"></span>
             </div>
 
             <div class="col-md-4">
-                <label for="Model" class="form-label">Model</label>
-                <input type="text" name="Model" class="form-control" value="@Model.Model">
+                <label asp-for="Model" class="form-label"></label>
+                <input asp-for="Model" class="form-control" value="@Model.Model">
+                <span asp-validation-for="Model"></span>
             </div>
 
             <div class="col-md-4">
-                <label for="FrameSize" class="form-label">Kadro Boyu</label>
-                <input type="text" name="FrameSize" class="form-control" value="@Model.FrameSize">
+                <label asp-for="FrameSize"  class="form-label"></label>
+                <input asp-for="FrameSize"  class="form-control" value="@Model.FrameSize">
+                <span asp-validation-for="FrameSize"></span>
             </div>
 
             <div class="col-md-4">
-                <label for="WheelSize" class="form-label">Tekerlek çapı</label>
-                <input type="text" name="WheelSize" class="form-control" value="@Model.WheelSize">
+                <label asp-for="WheelSize" class="form-label"></label>
+                <input asp-for="WheelSize" class="form-control" value="@Model.WheelSize">
+                <span asp-validation-for="WheelSize"></span>
             </div>
 
             <div class="col-md-4">
-                <label for="BrakeSystem" class="form-label">Fren sistemi</label>
-                <input type="text" name="BrakeSystem" class="form-control" value="@Model.BrakeSystem">
+                <label asp-for="BrakeSystem" class="form-label"></label>
+                <input asp-for="BrakeSystem" class="form-control" value="@Model.BrakeSystem">
+                <span asp-validation-for="BrakeSystem"></span>
             </div>
 
             <div class="col-md-4">
-                <label for="ForkType" class="form-label">Maşa tipi</label>
-                <input type="text" name="ForkType" class="form-control" value="@Model.ForkType">
+                <label asp-for="ForkType" class="form-label"></label>
+                <input asp-for="ForkType" class="form-control" value="@Model.ForkType">
+                <span asp-validation-for="ForkType"></span>
             </div>
 
             <div class="col-md-4">
-                <label for="Speed" class="form-label">Vites Sayısı</label>
-                <input type="number" name="Speed" class="form-control" value="@Model.Speed">
+                <label asp-for="Speed" class="form-label"></label>
+                <input asp-for="Speed" class="form-control" value="@Model.Speed">
+                <span asp-validation-for="Speed"></span>
             </div>
 
             <div class="col-md-4">
-                <label for="Warranty" class="form-label">Garanti Durumu</label>
-                <select id="Warranty" name="Warranty" class="form-select">
+                <label asp-for="Warranty" class="form-label"></label>
+                <select asp-for="Warranty" class="form-select">
                     <option selected value="@Model.Warranty">@Model.Warranty</option>
                     <option value="@(@Model.Warranty== "Devam Ediyor" ? "Devam Etmiyor" : "Devam Ediyor")">@(@Model.Warranty== "Devam Ediyor" ? "Devam Etmiyor" : "Devam Ediyor")</option>
                 </select>
+                <span asp-validation-for="Warranty"></span>
             </div>
 
             <div class="col-md-4">
-                <label for="RearDerailleur" class="form-label">Arka Aktarıcı</label>
-                <input type="text" name="RearDerailleur" class="form-control" value="@Model.RearDerailleur">
+                <label asp-for="RearDerailleur" class="form-label"></label>
+                <input asp-for="RearDerailleur" class="form-control" value="@Model.RearDerailleur">
+                <span asp-validation-for="RearDerailleur"></span>
             </div>
 
             <div class="col-md-4">
-                <label for="FrontDerailleurs" class="form-label">Ön Aktarıcı</label>
-                <input type="text" name="FrontDerailleurs" class="form-control" value="@Model.FrontDerailleurs">
+                <label asp-for="FrontDerailleurs" class="form-label"></label>
+                <input asp-for="FrontDerailleurs" class="form-control" value="@Model.FrontDerailleurs">
+                <span asp-validation-for="FrontDerailleurs"></span>
             </div>
 
             <div class="col-md-4">
-                <label for="Crankset" class="form-label">Aynakol</label>
-                <input type="text" name="Crankset" class="form-control" value="@Model.Crankset">
+                <label asp-for="Crankset" class="form-label"></label>
+                <input asp-for="Crankset" class="form-control" value="@Model.Crankset">
+                <span asp-validation-for="Crankset"></span>
             </div>
 
             <div class="col-md-4">
-                <label for="Image" class="form-label">Fotoğraf</label>
-                <input class="form-control" name="Image" type="file" id="Image">
+                <label asp-for="Image" class="form-label"></label>
+                <input asp-for="Image" class="form-control" >
+                <span asp-validation-for="Image"></span>
             </div>
 
             <div class="col-12 text-center">

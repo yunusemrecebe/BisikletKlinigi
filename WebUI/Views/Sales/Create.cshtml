@@ -2,46 +2,51 @@
     Layout = "_AdminLayout";
 }
 
+@model Entities.Concrete.Sale
+
 @{
     ViewBag.Title = "Yönetim Paneli - İlan Oluşturma";
 }
 
-@if(@ViewBag.updateMessage != null)
+@if (@ViewBag.updateMessage != null)
 {
-<div class="alert alert-warning myAlert">
-    @ViewBag.updateMessage
-</div>
+    <div class="alert alert-warning myAlert">
+        @ViewBag.updateMessage
+    </div>
 }
 <div class="container">
 
     <form class="row mt-4 g-3 pb-5" method="post" asp-controller="Sales" asp-action="Create" enctype="multipart/form-data">
 
         <div class="col-md-4">
-            <label for="Topic" class="form-label">Başlık</label>
-            <input type="text" name="Topic" class="form-control" id="Topic">
+            <label asp-for="Topic" class="form-label"></label>
+            <input asp-for="Topic" class="form-control" id="Topic">
         </div>
+
         <div class="col-md-4">
-            <label for="Usage" class="form-label">Kullanım Durumu</label>
-            <select id="Usage" name="Usage" class="form-select">
+            <label asp-for="Usage" class="form-label"></label>
+            <select asp-for="Usage" id="Usage" class="form-select">
                 <option selected value="sifir">Sıfır</option>
                 <option value="ikinciel">İkinci El</option>
             </select>
         </div>
+
         <div class="col-md-4">
-            <label for="Price" class="form-label">Fiyat</label>
-            <input type="text" pattern="^\d*(\.\d{0,2})?$" name="Price" class="form-control" id="Price">
+            <label asp-for="Price" class="form-label"></label>
+            <input asp-for="Price" pattern="^\d*(\.\d{0,2})?$" class="form-control" id="Price">
         </div>
 
         <div class="col-md-8">
-            <label for="Description" class="form-label">Açıklama</label>
-            <textarea class="form-control" name="Description" id="Description" rows="4"></textarea>
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control" rows="4"></textarea>
         </div>
 
         <div class="col-md-4">
+
             <div class="row">
                 <div class="col">
-                    <label for="Genre" class="form-label">Tür</label>
-                    <select id="Genre" name="Genre" class="form-select">
+                    <label asp-for="Genre" class="form-label"></label>
+                    <select asp-for="Genre" id="Genre" class="form-select">
                         <option selected value="Yol Bisikleti">Yol Bisikleti</option>
                         <option value="Dağ Bisikleti">Dağ Bisikleti</option>
                         <option value="Şehir Bisikleti">Şehir Bisikleti</option>
@@ -50,86 +55,83 @@
                     </select>
                 </div>
             </div>
+
             <div class="row pt-2">
                 <div class="col">
-                    <label for="Shifters" class="form-label">Vites Kolları</label>
-                    <input type="text" name="Shifters" class="form-control">
+                    <label asp-for="Shifters" class="form-label"></label>
+                    <input asp-for="Shifters" class="form-control">
                 </div>
             </div>
-           
 
-        </div>
-        
-
-
-        <div class="col-md-4">
-            <label for="Brand" class="form-label">Marka</label>
-            <input type="text" name="Brand" class="form-control">
         </div>
 
         <div class="col-md-4">
-            <label for="Model" class="form-label">Model</label>
-            <input type="text" name="Model" class="form-control">
+            <label asp-for="Brand" class="form-label"></label>
+            <input asp-for="Brand" class="form-control">
         </div>
 
         <div class="col-md-4">
-            <label for="FrameSize" class="form-label">Kadro Boyu</label>
-            <input type="text" name="FrameSize" class="form-control">
+            <label asp-for="Model" class="form-label"></label>
+            <input asp-for="Model" class="form-control">
         </div>
 
         <div class="col-md-4">
-            <label for="WheelSize" class="form-label">Tekerlek çapı</label>
-            <input type="text" name="WheelSize" class="form-control">
+            <label asp-for="FrameSize" class="form-label"></label>
+            <input asp-for="FrameSize" class="form-control">
         </div>
 
         <div class="col-md-4">
-            <label for="BrakeSystem" class="form-label">Fren sistemi</label>
-            <input type="text" name="BrakeSystem" class="form-control">
+            <label asp-for="WheelSize" class="form-label"></label>
+            <input asp-for="WheelSize" class="form-control">
         </div>
 
         <div class="col-md-4">
-            <label for="ForkType" class="form-label">Maşa tipi</label>
-            <input type="text" name="ForkType" class="form-control">
+            <label asp-for="BrakeSystem" class="form-label"></label>
+            <input asp-for="BrakeSystem" class="form-control">
         </div>
 
         <div class="col-md-4">
-            <label for="Speed" class="form-label">Vites Sayısı</label>
-            <input type="number" name="Speed" class="form-control">
+            <label asp-for="ForkType" class="form-label"></label>
+            <input asp-for="ForkType" class="form-control">
         </div>
 
         <div class="col-md-4">
-            <label for="Warranty" class="form-label">Garanti Durumu</label>
-            <select id="Warranty" name="Warranty" class="form-select">
+            <label asp-for="Speed" class="form-label"></label>
+            <input asp-for="Speed" class="form-control">
+        </div>
+
+        <div class="col-md-4">
+            <label asp-for="Warranty" class="form-label"></label>
+            <select asp-for="Warranty" id="Warranty" class="form-select">
                 <option selected value="Devam Ediyor">Devam Ediyor</option>
                 <option value="Devam Etmiyor">Devam Etmiyor</option>
             </select>
         </div>
 
         <div class="col-md-4">
-            <label for="RearDerailleur" class="form-label">Arka Aktarıcı</label>
-            <input type="text" name="RearDerailleur" class="form-control">
+            <label asp-for="RearDerailleur" class="form-label"></label>
+            <input asp-for="RearDerailleur" class="form-control">
         </div>
 
         <div class="col-md-4">
-            <label for="FrontDerailleurs" class="form-label">Ön Aktarıcı</label>
-            <input type="text" name="FrontDerailleurs" class="form-control">
+            <label asp-for="FrontDerailleurs" class="form-label"></label>
+            <input asp-for="FrontDerailleurs" class="form-control">
         </div>
 
         <div class="col-md-4">
-            <label for="Crankset" class="form-label">Aynakol</label>
-            <input type="text" name="Crankset" class="form-control">
+            <label asp-for="Crankset" class="form-label"></label>
+            <input asp-for="Crankset" class="form-control">
         </div>
 
-
-
         <div class="col-md-4">
-            <label for="Image" class="form-label">Fotoğraf</label>
-            <input class="form-control" name="Image" type="file" id="Image">
+            <label asp-for="Image" class="form-label"></label>
+            <input asp-for="Image" class="form-control" id="Image">
         </div>
 
         <div class="col-12 text-center">
             <button type="submit" class="btn btn-lg btn-primary">Gönder</button>
         </div>
+
     </form>
 
 </div>

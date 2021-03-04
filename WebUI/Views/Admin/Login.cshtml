@@ -2,6 +2,8 @@
     Layout = "_noLayout";
 }
 
+@model Entities.Concrete.User
+
 @{
     ViewBag.Title = "Yönetim Paneli - Giriş Yap";
 }
@@ -15,15 +17,17 @@
         @(TempData["userIsNotLogin"] = null);
     }
 
-    <form action="/Admin/Login" method="post" class="Portal-kayit-form">
+    <form method="post" asp-controller="Admin" asp-action="Login" class="Portal-kayit-form">
         <div class="row">
             <div class="mb-3">
-                <label for="mail" class="form-label">Email adresi</label>
-                <input type="email" class="form-control" name="mail" aria-describedby="emailHelp" />
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email"></span>
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label">Şifreniz</label>
-                <input type="password" class="form-control" name="password" />
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password"></span>
             </div>
             <div class="sm-3 text-center">
                 <button type="submit" class="btn btn-lg btn-primary">Giriş Yap</button>

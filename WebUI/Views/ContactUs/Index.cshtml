@@ -2,6 +2,7 @@
     ViewBag.Title = "Bize Ulaşın - Bisiklet Kliniği";
 }
 
+@model Entities.Concrete.ContactUs
 
 <div class="container mt-4 Contact">
     <div class="row">
@@ -33,28 +34,32 @@
                     <h1 style="color: red;">@TempData["ContactSendMessageResult"]</h1>
                     <hr />
                 }
-                <form method="POST" action="/ContactUs/SendMessage" class="form-horizontal">
+                <form method="POST" asp-controller="ContactUs" asp-action="SendMessage" class="form-horizontal">
                     <div class="row mt-3">
                         <div class="col">
                             <div class="form-group">
-                                <label for="Name">İsim</label>
-                                <input type="text" class="form-control" name="FirstName" placeholder="İsim">
+                                <label asp-for="FirstName"></label>
+                                <input asp-for="FirstName" class="form-control" placeholder="İsim">
+                                <span asp-validation-for="FirstName"></span>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="LastName">Soyisim</label>
-                                <input type="text" class="form-control" name="LastName" placeholder="Soyisim">
+                                <label asp-for="LastName"></label>
+                                <input asp-for="LastName" class="form-control" placeholder="Soyisim">
+                                <span asp-validation-for="LastName"></span>
                             </div>
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        <label for="Email">Email</label>
-                        <input type="email" class="form-control" name="Email" placeholder="isimsoyisim@example.com">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" placeholder="isimsoyisim@example.com">
+                        <span asp-validation-for="Email"></span>
                     </div>
                     <div class="form-group mt-3">
-                        <label for="Message">Mesaj</label>
-                        <textarea class="form-control" name="Message" placeholder="Buradan bir mesaj gönderebilirsiniz!"></textarea>
+                        <label asp-for="Message"></label>
+                        <textarea asp-for="Message" class="form-control" placeholder="Buradan bir mesaj gönderebilirsiniz!"></textarea>
+                        <span asp-validation-for="Message"></span>
                     </div>
                     <button type="submit" class="btn btn-danger btn-lg mt-3">Gönder</button>
                 </form>
