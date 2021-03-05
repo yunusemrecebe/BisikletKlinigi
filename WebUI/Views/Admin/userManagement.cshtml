@@ -19,36 +19,36 @@ else
     <form class="row mt-4 g-3 pb-2" method="post" asp-controller="Admin" asp-action="UserManagement">
 
         <div class="col-md-6">
-            <input type="hidden" name="Role" class="form-control" value="@Model.Role">
+            <input type="hidden" asp-for="Role" class="form-control" value="@Model.Role">
         </div>
 
         <div class="col-md-6">
-            <input type="hidden" name="Id" class="form-control" value="@Model.Id">
+            <input type="hidden" asp-for="Id" class="form-control" value="@Model.Id">
         </div>
 
         <div class="col-md-6">
             <label for="Name" class="form-label">İsim</label>
-            <input type="text" name="Name" class="form-control" value="@Model.Name">
+            <input asp-for="Name" class="form-control" value="@Model.Name">
         </div>
 
         <div class="col-md-6">
             <label for="LastName" class="form-label">Soyisim</label>
-            <input type="text" name="LastName" class="form-control" value="@Model.LastName">
+            <input asp-for="LastName" class="form-control" value="@Model.LastName">
         </div>
 
         <div class="col-md-6">
             <label for="Password" class="form-label">Şifre</label>
-            <input type="password" name="Password" class="form-control" value="@Model.Password">
+            <input type="password" asp-for="Password" class="form-control" value="@Model.Password">
         </div>
 
         <div class="col-md-6">
             <label for="Email" class="form-label">E-Mail</label>
-            <input type="email" name="Email" class="form-control" value="@Model.Email">
+            <input asp-for="Email" class="form-control" value="@Model.Email">
         </div>
 
         <div class="col-md-6">
             <label for="Phone" class="form-label">Telefon</label>
-            <input type="tel" name="Phone" class="form-control" value="@Model.Phone">
+            <input asp-for="Phone" class="form-control" value="@Model.Phone">
         </div>
 
         <div class="col-md-6 position-relative">

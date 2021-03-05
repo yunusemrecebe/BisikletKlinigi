@@ -7,8 +7,14 @@
     ViewBag.Title = "Yönetim Paneli - İlan Güncelle";
 }
 
-@if (ViewBag.updateResult != null)
+@if (ViewBag.updateMessage != null)
 {
+<center>
+    <div class="alert alert-warning myAlert text-center mt-3">
+        @ViewBag.updateMessage
+    </div>
+</center>
+}
 
     <div class="container">
 
@@ -31,7 +37,7 @@
 
             <div class="col-md-4">
                 <label asp-for="Price" class="form-label"></label>
-                <input asp-for="Price" class="form-control" value="@Model.Price">
+                <input asp-for="Price" class="form-control" pattern="^(0(?!\.00) |[1 - 9]\d{ 0,6})\.\d{ 2}$" value="@Model.Price">
                 <span asp-validation-for="Price"></span>
             </div>
 
@@ -103,7 +109,7 @@
 
             <div class="col-md-4">
                 <label asp-for="Speed" class="form-label"></label>
-                <input asp-for="Speed" class="form-control" value="@Model.Speed">
+                <input asp-for="Speed" type="number" class="form-control" value="@Model.Speed">
                 <span asp-validation-for="Speed"></span>
             </div>
 
@@ -136,7 +142,7 @@
 
             <div class="col-md-4">
                 <label asp-for="Image" class="form-label"></label>
-                <input asp-for="Image" class="form-control" >
+                <input asp-for="Image" type="file" class="form-control" >
                 <span asp-validation-for="Image"></span>
             </div>
 
@@ -147,10 +153,3 @@
         </form>
 
     </div>
-}
-else
-{
-    <div class="alert alert-warning myAlert">
-        @ViewBag.updateMessage
-    </div>
-}

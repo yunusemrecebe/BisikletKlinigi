@@ -103,6 +103,7 @@ namespace WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
+                user.Role = 1;
                 var result = _userService.Add(user);
                 if (result.Success)
                 {
@@ -157,7 +158,7 @@ namespace WebUI.Controllers
 
             ViewBag.userManagementResult = true;
             ViewBag.userManagementMessage = FeedBacks.UserCanNotUpdated;
-            return View();
+            return View(user);
         }
 
         [HttpGet]

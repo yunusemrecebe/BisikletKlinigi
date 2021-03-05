@@ -69,7 +69,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Sale sale, IFormFile Image)
+        public async Task<IActionResult> Create(Entities.Concrete.Sale sale, IFormFile Image)
         {
             if (HttpContext.Session.GetString("isUserLogin") != "true" || HttpContext.Session.GetInt32("userRole") == 1)
             {
@@ -103,15 +103,20 @@ namespace WebUI.Controllers
                     return View(sale);
                 }
             }
-
+            
             sale.Owner = Convert.ToInt32(HttpContext.Session.GetInt32("userId"));
-            var result = _saleService.Add(sale);
-            if (result.Success)
+            if (ModelState.IsValid)
             {
-                TempData["createSuccess"] = result.Message;
-                return RedirectToAction("Index","Admin");
+                var result = _saleService.Add(sale);
+                if (result.Success)
+                {
+                    TempData["createSuccess"] = result.Message;
+                    return RedirectToAction("Index","Admin");
+                }
+
+                ViewBag.createSuccess = result.Message;
             }
-            ViewBag.createSuccess = result.Message;
+            //ViewBag.createSuccess = FeedBacks.SaleCanNotAdded;
             return View();
         }
 
@@ -141,16 +146,18 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(Sale sale, IFormFile? Image)
+        public async Task<IActionResult> Update(Entities.Concrete.Sale sale, IFormFile? Image)
         {
             if (HttpContext.Session.GetString("isUserLogin") != "true" || HttpContext.Session.GetInt32("userRole") == 1)
             {
                 TempData["userIsNotLogin"] = "Yönetim Paneline Erişebilmek İçin Lütfen Giriş Yapınız!";
                 return RedirectToAction("Login","Admin");
             }
+            bool isImageUpdated = false;
 
             if (Image != null)
             {
+                isImageUpdated = true;
                 bool extensionIsChecked = false;
                 var extension = Path.GetExtension(Image.FileName);
                 if (extension == ".jpg" || extension == ".png" || extension == ".jpeg" || extension == ".jfif")
@@ -177,22 +184,27 @@ namespace WebUI.Controllers
                 }
 
             }
-            else
-            {
-                sale.Image = TempData["oldImage"].ToString();
-            }
 
             sale.Owner = Convert.ToInt32(HttpContext.Session.GetInt32("userId"));
-            var result = _saleService.Update(sale);
-            if (result.Success)
+
+            if (ModelState.IsValid)
             {
-                TempData["updateSuccess"] = result.Message;
-                return RedirectToAction("Index","Admin");
+                if (!isImageUpdated)
+                {
+                    var nonUpdatedSale = _saleService.GetById(sale.Id);
+                    sale.Image = nonUpdatedSale.Data.Image;
+                }
+                var result = _saleService.Update(sale);
+                if (result.Success)
+                {
+                    TempData["updateSuccess"] = result.Message;
+                    return RedirectToAction("Index", "Admin");
+                }
+
             }
 
-            ViewBag.updateResult = null;
-            ViewBag.updateMessage = result.Message;
-            return View();
+            ViewBag.updateMessage = FeedBacks.SaleCanNotUpdated;
+            return View(sale);
         }
 
         public IActionResult Delete(int id)

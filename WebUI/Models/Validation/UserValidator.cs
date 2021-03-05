@@ -36,11 +36,6 @@ namespace WebUI.Models.Validation
             RuleFor(x => x.Phone)
                 .NotEmpty().WithMessage("Telefon bilgisi boş bırakılamaz")
                 .NotNull().WithMessage("Telefon bilgisi boş bırakılamaz");
-
-            RuleFor(x => x.Role)
-                .NotEmpty()
-                .NotNull()
-                .Equal(1);
         }
     }
 }
