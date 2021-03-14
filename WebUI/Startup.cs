@@ -25,7 +25,7 @@ namespace WebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<Startup>());
-            services.AddSession();
+            services.AddSession(options => options.IdleTimeout = TimeSpan.FromMinutes(180));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
