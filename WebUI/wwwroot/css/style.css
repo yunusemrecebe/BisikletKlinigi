@@ -43,8 +43,6 @@ body {
     min-height: 70vh;
 }
 
-
-
 footer {
     background-color: var(--footer-background-color);
 }
@@ -85,10 +83,6 @@ footer a:hover {
     font-size: var(--contact-font-size);
 }
 
-.Sales-card img {
-    height: 100% !important;
-}
-
 .Sales-card .card-text {
     height: 6rem;
     overflow: hidden;
@@ -102,6 +96,10 @@ footer a:hover {
 .Sales-card .card-money{
     font-size:1.3rem;
     font-weight:bold;
+}
+
+.Sales-card img {
+    height: 100% !important;
 }
 
 .Contact iframe {
@@ -124,43 +122,49 @@ span.field-validation-error {
 
 }
 
-    @media only screen and (max-width: 768px) {
-        .Mobile-order1 {
-            order: -1;
-        }
-
-
-        .Sales-card .card-money {
-            float: right;
-        }
-
-        .Sales-card .card-text {
-            height: 4.2rem;
-            overflow: hidden;
-        }
-
-        .slider-text {
-            display: none !important;
-        }
-
-        .Sales-row {
-            justify-content: center;
-        }
-
-        .Sales-card {
-            width: 12rem !important;
-        }
-
-
-        .Home-cards {
-            font-size: var(--mobile-home-font-size);
-        }
-
-            .Home-cards p {
-                margin-top: 20px;
-            }
-
-            .Home-cards img {
-                width: 200px;
-            }
+@media only screen and (max-width: 768px) {
+    .Mobile-order1 {
+        order: -1;
     }
+
+
+    .Sales-card .card-money {
+        float: right;
+    }
+
+    .Sales-card .card-text {
+        height: 4.2rem;
+        overflow: hidden;
+    }
+
+    .slider-text {
+        display: none !important;
+    }
+
+    .Sales-row {
+        justify-content: center;
+    }
+
+    .Sales-card {
+        width: 12rem !important;
+    }
+
+
+    .Home-cards {
+        font-size: var(--mobile-home-font-size);
+    }
+
+        .Home-cards p {
+            margin-top: 20px;
+        }
+
+        .Home-cards img {
+            width: 200px;
+        }
+}
+
+@media only screen and (max-width: 400px) {
+    .Sales-card img {
+        max-height: 8rem !important;
+    }
+}

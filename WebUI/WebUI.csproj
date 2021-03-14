@@ -3,6 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>b5bc5889-de0f-49ac-9e2b-76b7aa5ba5c4</UserSecretsId>
+    <PackageId>BisikletKlinigiByYESODE</PackageId>
+    <Authors>YESODE</Authors>
+    <Product>Bisiklet Kliniği</Product>
+    <PackageProjectUrl>bisikletklinigi.com</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>true</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
